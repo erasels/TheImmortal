@@ -7,11 +7,13 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import theImmortal.actions.utility.ClearAllDebuffsAction;
 import theImmortal.patches.combat.ExhaustionMechanics;
 import theImmortal.patches.general.Immortality;
 import theImmortal.ui.ExhaustionPanel;
 import theImmortal.util.UC;
 import theImmortal.vfx.combat.FireIgniteEffect;
+import theImmortal.vfx.combat.ReviveEffect;
 
 import static theImmortal.characters.ImmortalCharacter.Enums.THE_IMMORTAL;
 
@@ -26,7 +28,7 @@ public class ImmortalityManager {
         int ex = getExhaustion();
         if(ex > 0) {
             UC.doDmg(UC.p, ex, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true, true);
-            UC.doVfx(new FireIgniteEffect(ImmortalityManager.getExhaustionPanel().current_x, ImmortalityManager.getExhaustionPanel().current_y, ex*5), 0.01f);
+            UC.doVfx(new FireIgniteEffect(ImmortalityManager.getExhaustionPanel().current_x, ImmortalityManager.getExhaustionPanel().current_y, ex*5));
         }
     }
 
@@ -35,9 +37,11 @@ public class ImmortalityManager {
             if (getExhaustion() < MAX_DEATH_COUNT) {
                 UC.p.isDead = false;
                 addExhaustion(1);
+                UC.atb(new ClearAllDebuffsAction(UC.p));
                 AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
                 AbstractDungeon.player.healthBarUpdatedEvent();
-                //TODO: Add revive effect
+
+                UC.doVfx(new ReviveEffect(UC.p));
 
                 return true;
             }
