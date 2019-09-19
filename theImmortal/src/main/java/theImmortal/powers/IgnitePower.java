@@ -2,6 +2,7 @@ package theImmortal.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -43,7 +44,7 @@ public class IgnitePower extends AbstractImmortalPower implements CloneablePower
             if (!AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
                 int stack = MathUtils.ceil(amount/2.0f);
                 flashWithoutSound();
-                UC.doDmg(owner, stack, DamageInfo.DamageType.THORNS);
+                UC.doDmg(owner, stack, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE);
 
                 if (this.amount <= 0) {
                     UC.atb(new RemoveSpecificPowerAction(this.owner, this.owner, this));
