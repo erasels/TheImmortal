@@ -1,13 +1,22 @@
 package theImmortal.cards.abstracts;
 
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import theImmortal.TheImmortal;
 import theImmortal.characters.ImmortalCharacter;
 import theImmortal.util.CardInfo;
 import theImmortal.util.TextureLoader;
+
+import java.lang.reflect.Field;
 
 import static theImmortal.TheImmortal.makeID;
 
@@ -34,6 +43,13 @@ public abstract class ImmortalCard extends CustomCard {
     protected boolean baseInnate;
     protected boolean upgInnate;
 
+    public int baseHPCost;
+    public int hpCost;
+    public boolean isHPCostModified;
+    protected boolean upgradedHPCost;
+    protected boolean upgradeHPCost;
+    protected int hpCostUpgrade;
+
     public ImmortalCard(CardInfo cardInfo, boolean upgradesDescription) {
         this(ImmortalCharacter.Enums.COLOR_IMMORTAL, cardInfo.cardName, cardInfo.cardCost, cardInfo.cardType, cardInfo.cardTarget, cardInfo.cardRarity, upgradesDescription);
     }
@@ -53,17 +69,26 @@ public abstract class ImmortalCard extends CustomCard {
 
         this.baseCost = cost;
 
+        this.baseHPCost = -1;
+        this.hpCost = -1;
+        this.isHPCostModified = false;
+
         this.upgradesDescription = upgradesDescription;
+
+        this.upgradedHPCost = false;
 
         this.upgradeCost = false;
         this.upgradeDamage = false;
         this.upgradeBlock = false;
         this.upgradeMagic = false;
+        this.upgradeHPCost = false;
 
         this.costUpgrade = cost;
         this.damageUpgrade = 0;
         this.blockUpgrade = 0;
         this.magicUpgrade = 0;
+        this.hpCostUpgrade = 0;
+
 
         InitializeCard();
     }
@@ -79,6 +104,10 @@ public abstract class ImmortalCard extends CustomCard {
 
     public void setMagic(int magic) {
         this.setMagic(magic, 0);
+    }
+
+    public void setHPCost(int hpCost) {
+        this.setHPCost(hpCost, 0);
     }
 
     public void setCostUpgrade(int costUpgrade) {
@@ -114,6 +143,14 @@ public abstract class ImmortalCard extends CustomCard {
         }
     }
 
+    public void setHPCost(int hpCost, int hpCostUpgrade) {
+        this.baseHPCost = this.hpCost = hpCost;
+        if (hpCostUpgrade != 0) {
+            this.upgradeHPCost = true;
+            this.hpCostUpgrade = hpCostUpgrade;
+        }
+    }
+
     public void setExhaust(boolean baseExhaust, boolean upgExhaust) {
         this.baseExhaust = baseExhaust;
         this.upgExhaust = upgExhaust;
@@ -140,15 +177,20 @@ public abstract class ImmortalCard extends CustomCard {
 
             ((ImmortalCard) card).baseCost = this.baseCost;
 
+            ((ImmortalCard) card).baseHPCost = this.baseHPCost;
+            ((ImmortalCard) card).hpCost = this.hpCost;
+
             ((ImmortalCard) card).upgradeCost = this.upgradeCost;
             ((ImmortalCard) card).upgradeDamage = this.upgradeDamage;
             ((ImmortalCard) card).upgradeBlock = this.upgradeBlock;
             ((ImmortalCard) card).upgradeMagic = this.upgradeMagic;
+            ((ImmortalCard) card).upgradeHPCost = this.upgradeHPCost;
 
             ((ImmortalCard) card).costUpgrade = this.costUpgrade;
             ((ImmortalCard) card).damageUpgrade = this.damageUpgrade;
             ((ImmortalCard) card).blockUpgrade = this.blockUpgrade;
             ((ImmortalCard) card).magicUpgrade = this.magicUpgrade;
+            ((ImmortalCard) card).hpCostUpgrade = this.hpCostUpgrade;
 
             ((ImmortalCard) card).baseExhaust = this.baseExhaust;
             ((ImmortalCard) card).upgExhaust = this.upgExhaust;
@@ -189,6 +231,9 @@ public abstract class ImmortalCard extends CustomCard {
             if (upgradeMagic)
                 this.upgradeMagicNumber(magicUpgrade);
 
+            if (upgradeHPCost)
+                this.upgradeHPCost(hpCostUpgrade);
+
             if (baseExhaust ^ upgExhaust) //different
                 this.exhaust = upgExhaust;
 
@@ -206,8 +251,114 @@ public abstract class ImmortalCard extends CustomCard {
         this.initializeDescription();
     }
 
+
+    private static Texture HP_COST_ORB;
+    private static Color renderColor = Color.WHITE.cpy();
+
+    //TODO: Make this render in the big card view
+    public static void renderHPCost(ImmortalCard card, SpriteBatch sb) {
+        float drawX = card.current_x - 256.0F;
+        float drawY = card.current_y - 256.0F;
+
+        if (HP_COST_ORB == null) {
+            HP_COST_ORB = TextureLoader.getTexture(TheImmortal.makeImagePath("512/CardHPCostOrb.png"));
+        }
+        if(ENERGY_COST_MODIFIED_COLOR == null){
+            getColorConstants();
+        }
+
+        if (!card.isLocked && card.isSeen) {
+            //logger.info("attempting render");
+            if (card.hpCost > -1) {
+                card.renderHelper(sb, renderColor, HP_COST_ORB, drawX, drawY);
+
+                String msg = Integer.toString(card.hpCost);
+                Color costColor = Color.WHITE.cpy();
+                if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(card)) {
+                    if (card.isHPCostModified) {
+                        if (card.hpCost > card.baseHPCost) {
+                            costColor = ENERGY_COST_RESTRICTED_COLOR;
+                        } else if (card.hpCost < card.baseHPCost) {
+                            costColor = ENERGY_COST_MODIFIED_COLOR;
+                        }
+                    }
+                }
+                costColor.a = card.transparency;
+
+                FontHelper.renderRotatedText(sb, getHPCostFont(card), msg, card.current_x,
+                        card.current_y, -132.0F * card.drawScale * Settings.scale,
+                        129.0F * card.drawScale * Settings.scale, card.angle,
+                        true, costColor);
+            }
+        }
+    }
+
+    private void renderHelper(SpriteBatch sb, Color color, Texture img, float drawX, float drawY) {
+        float scale = 0.25f;
+        sb.setColor(color);
+        sb.draw(img, drawX , drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+    }
+
+    private static BitmapFont getHPCostFont(AbstractCard card) {
+        FontHelper.cardEnergyFont_L.getData().setScale(card.drawScale * 0.75f);
+        return FontHelper.cardEnergyFont_L;
+    }
+
+    private static Color ENERGY_COST_RESTRICTED_COLOR, ENERGY_COST_MODIFIED_COLOR;
+
+    private static void getColorConstants() {
+        Field f;
+        try {
+            f = AbstractCard.class.getDeclaredField("ENERGY_COST_RESTRICTED_COLOR");
+            f.setAccessible(true);
+            ENERGY_COST_RESTRICTED_COLOR = (Color) f.get(null);
+
+            f = AbstractCard.class.getDeclaredField("ENERGY_COST_MODIFIED_COLOR");
+            f.setAccessible(true);
+            ENERGY_COST_MODIFIED_COLOR = (Color) f.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void update() {
         super.update();
+    }
+
+    @Override
+    public void displayUpgrades() {
+        super.displayUpgrades();
+        if (this.upgradedHPCost) {
+            this.hpCost = this.baseHPCost;
+            this.isHPCostModified = true;
+        }
+    }
+
+    @Override
+    public void resetAttributes() {
+        super.resetAttributes();
+        this.hpCost = this.baseHPCost;
+        this.isHPCostModified = false;
+    }
+
+    @Override
+    public void applyPowers() {
+        this.applyPowersToHPCost();
+        super.applyPowers();
+    }
+
+    private void applyPowersToHPCost() {
+        this.isHPCostModified = false;
+        this.hpCost = this.baseHPCost;
+        /*if (UC.p.hasPower(SealPower.ID))
+            this.hpCost = 0;*/
+        if (this.hpCost != this.baseHPCost) this.isHPCostModified = true;
+    }
+
+    protected void upgradeHPCost(int amount) {
+        this.baseHPCost += amount;
+        this.hpCost = this.baseHPCost;
+        this.upgradedHPCost = true;
     }
 }
