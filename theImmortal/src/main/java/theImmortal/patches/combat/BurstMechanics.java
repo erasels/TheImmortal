@@ -13,10 +13,6 @@ import javassist.CtBehavior;
 import java.util.ArrayList;
 
 public class BurstMechanics {
-    public static class BurstCardEnum {
-        @SpireEnum
-        public static AbstractCard.CardTags BURST;
-    }
 
     @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
     public static class PlayerBurstField {
