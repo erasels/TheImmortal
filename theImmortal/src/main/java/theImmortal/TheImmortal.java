@@ -24,7 +24,6 @@ import theImmortal.mechanics.ImmortalityManager;
 import theImmortal.util.IDCheckDontTouchPls;
 import theImmortal.util.TextureLoader;
 import theImmortal.variables.DefaultCustomVariable;
-import theImmortal.variables.DefaultSecondMagicNumber;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -157,7 +156,6 @@ public class TheImmortal implements
     public void receiveEditCards() {
         pathCheck();
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
-        BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
 
         try {
             AutoLoader.addCards();
@@ -197,6 +195,10 @@ public class TheImmortal implements
 
     public static String makePath(String resourcePath) {
         return getModID() + "Resources/" + resourcePath;
+    }
+
+    public static String makeImagePath(String resourcePath) {
+        return getModID() + "Resources/images/" + resourcePath;
     }
 
     public static String makeCardPath(String resourcePath) {
