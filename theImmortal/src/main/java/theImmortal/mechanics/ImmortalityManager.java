@@ -57,7 +57,7 @@ public class ImmortalityManager {
     }
 
     public static void setExhaustion(int newVal) {
-        if(CardCrawlGame.isInARun()) {
+        if(Immortality.ImmortalityFields.exhaustion.get(UC.p) != null) {
             Immortality.ImmortalityFields.exhaustion.set(AbstractDungeon.player, newVal);
         }
     }
