@@ -40,7 +40,7 @@ public class Scorch extends ImmortalCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < this.magicNumber; i++) {
-            UC.doDmg(m, damage, AbstractGameAction.AttackEffect.FIRE);
+            UC.doDmg(m, damage, i%2==0? AbstractGameAction.AttackEffect.SLASH_VERTICAL: AbstractGameAction.AttackEffect.SLASH_HORIZONTAL);
         }
         if (m != null) {
             if (UC.checkBurst()) {
