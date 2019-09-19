@@ -1,0 +1,8 @@
+{
+  "theImmortal:ExhaustionPanel": {
+    "TEXT": [
+      "Exhaustion",
+      "You are immortal. If you were to die, you revive with full HP and gain Exhaustion. NL You lose #b1 HP per #yExhaustion whenever you play a card. NL You give up once you've died for the fifth time."
+    ]
+  }
+}

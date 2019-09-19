@@ -1,0 +1,29 @@
+[
+  {
+    "PROPER_NAME": "Burst",
+    "NAMES": [
+      "burst",
+      "Burst:"
+    ],
+    "DESCRIPTION": "This effect triggers if the last card played was an #yAttack [REMOVE_SPACE]."
+  },
+  {
+    "PROPER_NAME": "Ignite",
+    "NAMES": [
+      "ignite",
+      "ignited"
+    ],
+    "DESCRIPTION": "Ignited creatures take damage at the end of the monsters' turn. Each turn, Ignited is reduced by #bhalf its amount (rounded up)."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "Multiword Keyword",
+      "multiword_keyword",
+      "multiword_keywords",
+      "multikey",
+      "multikeyword"
+    ],
+    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  }
+]
