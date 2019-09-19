@@ -147,7 +147,6 @@ public class TheImmortal implements
 
     @Override
     public void receivePreStartGame() {
-        ImmortalityManager.setExhaustion(0);
     }
 
     @Override
