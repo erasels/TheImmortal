@@ -75,7 +75,7 @@ public class ImmortalCharacter extends CustomPlayer {
         dialogY = (drawY + 220.0F * Settings.scale);
     }
 
-    @Override
+    //@Override
     public String getPortraitImageName() {
         return BaseMod.getPlayerPortrait(chosenClass);
     }
