@@ -38,7 +38,7 @@ public class HPCostCardMechanics {
     public static class RunicCardElementRenderInLibraryPatch {
         public static void Postfix(AbstractCard __instance, SpriteBatch sb) {
             if (__instance instanceof ImmortalCard) {
-                ((ImmortalCard) __instance).renderHPCost((ImmortalCard)__instance, sb);
+                ImmortalCard.renderHPCost((ImmortalCard)__instance, sb);
             }
         }
     }
