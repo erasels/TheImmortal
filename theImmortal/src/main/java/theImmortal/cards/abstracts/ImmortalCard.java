@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import theImmortal.TheImmortal;
 import theImmortal.characters.ImmortalCharacter;
+import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 import theImmortal.util.TextureLoader;
 
@@ -63,6 +64,8 @@ public abstract class ImmortalCard extends CustomCard {
         this.textureImg = img;
         loadCardImage(textureImg);
 
+        this.rarity = autoRarity();
+
         this.rawDescription = cardStrings.DESCRIPTION;
         this.originalName = cardStrings.NAME;
         this.name = originalName;
@@ -88,6 +91,7 @@ public abstract class ImmortalCard extends CustomCard {
         this.blockUpgrade = 0;
         this.magicUpgrade = 0;
         this.hpCostUpgrade = 0;
+
 
 
         InitializeCard();
@@ -149,6 +153,9 @@ public abstract class ImmortalCard extends CustomCard {
             this.upgradeHPCost = true;
             this.hpCostUpgrade = hpCostUpgrade;
         }
+        if(!this.tags.contains(CardENUMs.HPLOSS)) {
+            this.tags.add(CardENUMs.HPLOSS);
+        }
     }
 
     public void setExhaust(boolean baseExhaust, boolean upgExhaust) {
@@ -165,6 +172,30 @@ public abstract class ImmortalCard extends CustomCard {
 
     public void setMultiDamage(boolean isMultiDamage) {
         this.isMultiDamage = isMultiDamage;
+    }
+
+    private CardRarity autoRarity() {
+        String packageName = this.getClass().getPackage().getName();
+
+        String directParent;
+        if(packageName.contains(".")) {
+            directParent = packageName.substring(1 + packageName.lastIndexOf("."));
+        } else {
+            directParent = packageName;
+        }
+        switch(directParent) {
+            case "common":
+                return CardRarity.COMMON;
+            case "uncommon":
+                return CardRarity.UNCOMMON;
+            case "rare":
+                return CardRarity.RARE;
+            case "basic":
+                return CardRarity.BASIC;
+            default:
+                TheImmortal.logger.info("Automatic Card rarity resulted in SPECIAL, input: " + directParent);
+                return CardRarity.SPECIAL;
+        }
     }
 
     @Override
@@ -294,7 +325,6 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     private void renderHelper(SpriteBatch sb, Color color, Texture img, float drawX, float drawY) {
-        float scale = 0.25f;
         sb.setColor(color);
         sb.draw(img, drawX , drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
     }
