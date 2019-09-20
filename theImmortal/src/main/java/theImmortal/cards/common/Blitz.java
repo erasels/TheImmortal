@@ -7,8 +7,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.cards.basic.Strike;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
 
@@ -37,8 +35,6 @@ public class Blitz extends ImmortalCard {
         setDamage(DAMAGE, UPG_DAMAGE);
         setMagic(MAGIC, UPG_MAGIC);
         setHPCost(HPCOST);
-
-        tags.add(CardENUMs.HPLOSS);
     }
 
     @Override
