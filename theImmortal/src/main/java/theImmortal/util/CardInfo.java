@@ -16,4 +16,9 @@ public class CardInfo {
         this.cardTarget = cardTarget;
         this.cardRarity = cardRarity;
     }
+
+    public CardInfo(String cardName, int cardCost, AbstractCard.CardType cardType, AbstractCard.CardTarget cardTarget)
+    {
+        this(cardName, cardCost, cardType, cardTarget, AbstractCard.CardRarity.BASIC);
+    }
 }
