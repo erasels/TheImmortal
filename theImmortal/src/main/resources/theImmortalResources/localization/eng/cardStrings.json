@@ -20,5 +20,13 @@
     "NAME": "Blitz",
     "DESCRIPTION": "Deal !D! damage twice.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage twice. NL Draw !M! card."
+  },
+  "theImmortal:SpontaneousCombustion": {
+    "NAME": "Spontaneous Combustion",
+    "DESCRIPTION": "Autoplay. NL Deal !D! damage to ALL enemies !M! times."
+  },
+  "theImmortal:Expiation": {
+    "NAME": "Expiation",
+    "DESCRIPTION": "Gain !B! Block and heal !M! HP for each Attack played this turn."
   }
 }
