@@ -1,4 +1,4 @@
-package theImmortal.vfx.combat;
+package theImmortal.vfx.general;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;

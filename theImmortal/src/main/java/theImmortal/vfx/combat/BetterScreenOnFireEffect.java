@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
+import theImmortal.vfx.general.BetterGiantFireEffect;
 
 public class BetterScreenOnFireEffect extends AbstractGameEffect {
     private float timer = 0.0F;
