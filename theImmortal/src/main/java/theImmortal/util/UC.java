@@ -1,5 +1,7 @@
 package theImmortal.util;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -37,7 +39,7 @@ public class UC {
     }
 
     public static void doDmg(AbstractCreature target, int amount, DamageInfo.DamageType dt) {
-    doDmg(target, amount, dt, AbstractGameAction.AttackEffect.NONE);
+        doDmg(target, amount, dt, AbstractGameAction.AttackEffect.NONE);
     }
 
     public static void doDmg(AbstractCreature target, int amount, AbstractGameAction.AttackEffect ae) {
@@ -53,7 +55,7 @@ public class UC {
     }
 
     public static void doDmg(AbstractCreature target, int amount, DamageInfo.DamageType dt, AbstractGameAction.AttackEffect ae, boolean fast, boolean top) {
-        if(top) {
+        if (top) {
             att(new DamageAction(target, new DamageInfo(p, amount, dt), ae, fast));
         } else {
             atb(new DamageAction(target, new DamageInfo(p, amount, dt), ae, fast));
@@ -73,7 +75,7 @@ public class UC {
     }
 
     public static void doPow(AbstractCreature source, AbstractCreature target, AbstractPower p, boolean top) {
-        if(top) {
+        if (top) {
             att(new ApplyPowerAction(target, source, p, p.amount));
         } else {
             atb(new ApplyPowerAction(target, source, p, p.amount));
@@ -86,5 +88,18 @@ public class UC {
 
     public static void doVfx(AbstractGameEffect gameEffect, float duration) {
         atb(new VFXAction(gameEffect, duration));
+    }
+
+
+    public static Color getRandomFireColor() {
+        int i = MathUtils.random(3);
+        switch (i) {
+            case 0:
+                return Color.ORANGE;
+            case 1:
+                return Color.YELLOW;
+            default:
+                return Color.RED;
+        }
     }
 }
