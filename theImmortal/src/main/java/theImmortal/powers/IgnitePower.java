@@ -31,7 +31,7 @@ public class IgnitePower extends AbstractImmortalPower implements CloneablePower
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private Random rng = new Random();
+    private static Random rng = new Random();
     public static Color tintCol = Color.ORANGE.cpy().add(0.1f, 0.3f, 0.3f, 1.0f);
 
     private static final float INTERVAL = 0.05f;
@@ -92,6 +92,12 @@ public class IgnitePower extends AbstractImmortalPower implements CloneablePower
                 __instance.tint.color.mul(IgnitePower.tintCol);
             }
         }
+    }
+
+    @Override
+    public void onInitialApplication() {
+        super.onInitialApplication();
+        particleTimer = 0.4f;
     }
 
     @Override

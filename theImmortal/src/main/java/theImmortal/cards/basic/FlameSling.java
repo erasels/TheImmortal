@@ -10,6 +10,7 @@ import theImmortal.patches.cards.CardENUMs;
 import theImmortal.powers.IgnitePower;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
+import theImmortal.vfx.combat.unique.FlameSlingEffect;
 
 import static theImmortal.TheImmortal.makeID;
 
@@ -36,6 +37,7 @@ public class FlameSling extends ImmortalCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        UC.doVfx(new FlameSlingEffect(p.drawX, p.drawY+(p.hb_h/2f), m.drawX, m.drawY+(m.hb_h/2f)));
         UC.doPow(m, new IgnitePower(m, magicNumber));
         UC.doPow(m, new VulnerablePower(m, VULN, false));
         if(upgraded && UC.checkBurst()) {
