@@ -1,11 +1,10 @@
 package theImmortal.vfx.combat;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.combat.LightFlareParticleEffect;
+import theImmortal.util.UC;
 import theImmortal.vfx.general.RedFireBurstParticleEffect;
 
 public class FireIgniteEffect extends AbstractGameEffect {
@@ -22,22 +21,10 @@ public class FireIgniteEffect extends AbstractGameEffect {
     public void update() {
         for (int i = 0; i < amount; ++i) {
             AbstractDungeon.effectsQueue.add(new RedFireBurstParticleEffect(this.x, this.y));
-            AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, randomFlareColor()));
+            AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, UC.getRandomFireColor()));
         }
 
         this.isDone = true;
-    }
-
-    private Color randomFlareColor() {
-        if (MathUtils.randomBoolean()) {
-            return Color.ORANGE;
-        } else {
-            if (MathUtils.randomBoolean()) {
-                return Color.YELLOW;
-            } else {
-                return Color.RED;
-            }
-        }
     }
 
     public void render(SpriteBatch sb) {

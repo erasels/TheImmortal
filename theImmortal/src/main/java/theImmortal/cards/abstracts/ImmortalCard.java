@@ -299,7 +299,6 @@ public abstract class ImmortalCard extends CustomCard {
         }
 
         if (!card.isLocked && card.isSeen) {
-            //logger.info("attempting render");
             if (card.hpCost > -1) {
                 card.renderHelper(sb, renderColor, HP_COST_ORB, drawX, drawY);
 
