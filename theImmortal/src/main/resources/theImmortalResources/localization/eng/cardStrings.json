@@ -28,5 +28,9 @@
   "theImmortal:Expiation": {
     "NAME": "Expiation",
     "DESCRIPTION": "Gain !B! Block and heal !M! HP for each Attack played this turn."
+  },
+  "theImmortal:RecklessDive": {
+    "NAME": "Reckless Dive",
+    "DESCRIPTION": "Draw !M! Attacks and lose HP equal to their combined cost."
   }
 }
