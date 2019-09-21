@@ -60,20 +60,20 @@ public class ExhaustionPanel extends AbstractPanel {
 
     private void updateVfx() {
         if (!isHidden && shouldRenderExhaustion()) {
-            cooldown -= Gdx.graphics.getDeltaTime();
+            cooldown -= Gdx.graphics.getRawDeltaTime();
             if (cooldown < 0.0f) {
                 cooldown = (10f / (getExhaustion() + 1));
                 energyVfxTimer = ENERGY_VFX_TIME;
             }
             if (energyVfxTimer != 0.0F) {
                 energyVfxColor.a = Interpolation.exp10In.apply(0.5F, 0.0F, 1.0F - energyVfxTimer / ENERGY_VFX_TIME);
-                energyVfxAngle += Gdx.graphics.getDeltaTime() * VFX_ROTATE_SPEED;
+                energyVfxAngle += Gdx.graphics.getRawDeltaTime() * VFX_ROTATE_SPEED;
                 if(energyVfxTimer > ENERGY_VFX_HALF_TIME) {
                     energyVfxScale = Settings.scale * Interpolation.exp10In.apply(1.0F, 0.1F, 1.0F - (1.0f - (energyVfxTimer - ENERGY_VFX_HALF_TIME) / ENERGY_VFX_HALF_TIME));
                 } else {
                     energyVfxScale = Settings.scale * Interpolation.exp10In.apply(1.0F, 0.1F, 1.0F - energyVfxTimer / ENERGY_VFX_HALF_TIME);
                 }
-                energyVfxTimer -= Gdx.graphics.getDeltaTime();
+                energyVfxTimer -= Gdx.graphics.getRawDeltaTime();
                 if (energyVfxTimer < 0.0F) {
                     energyVfxTimer = 0.0F;
                     energyVfxColor.a = 0.0F;

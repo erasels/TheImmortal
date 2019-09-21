@@ -57,7 +57,7 @@ public class ImmortalEnergyOrb extends CustomEnergyOrb {
         maxOffset = Math.min(120.0f * Settings.scale, energyCount * 30.0f * Settings.scale);
         baseEffects.removeIf((e) -> e.isDone);
         flameEffects.removeIf((e) -> e.isDone);
-        calmFireCooldown -= Gdx.graphics.getDeltaTime();
+        calmFireCooldown -= Gdx.graphics.getRawDeltaTime();
     }
 
     @Override

@@ -73,7 +73,7 @@ public class IgnitePower extends AbstractImmortalPower implements CloneablePower
 
     @Override
     public void updateParticles() {
-        this.particleTimer -= Gdx.graphics.getDeltaTime();
+        this.particleTimer -= Gdx.graphics.getRawDeltaTime();
         if (this.particleTimer < 0.0F) {
             float xOff = ((owner.hb_w) * (float) rng.nextGaussian())*0.25f;
             if(MathUtils.randomBoolean()) {
