@@ -31,6 +31,6 @@
   },
   "theImmortal:RecklessDive": {
     "NAME": "Reckless Dive",
-    "DESCRIPTION": "Draw !M! Attacks and lose HP equal to their combined cost."
+    "DESCRIPTION": "Put the next !M! Attacks of your draw pile into your hand and lose HP equal to their combined cost."
   }
 }
