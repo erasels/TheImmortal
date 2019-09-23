@@ -2,11 +2,11 @@ package theImmortal.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import theImmortal.actions.utility.DamageAllAction;
 import theImmortal.cards.abstracts.ImmortalCard;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
@@ -44,7 +44,7 @@ public class SpontaneousCombustion extends ImmortalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         UC.doVfx(new BetterScreenOnFireEffect(1.0f, 1.0f, "ATTACK_FLAME_BARRIER"));
         for(int i = 0; i < magicNumber; i ++) {
-            UC.atb(new DamageAllEnemiesAction(UC.p, DamageInfo.createDamageMatrix(damage), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE));
+            UC.atb(new DamageAllAction(UC.p, damage, false, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, false));
         }
     }
 
