@@ -32,5 +32,10 @@
   "theImmortal:RecklessDive": {
     "NAME": "Reckless Dive",
     "DESCRIPTION": "Put the next !M! Attacks of your draw pile into your hand and lose HP equal to their combined cost."
+  },
+  "theImmortal:Flare": {
+    "NAME": "Flare",
+    "DESCRIPTION": "Deal damage equal to all HP lost this combat to ALL enemies. NL (Currently: !theImmortal:M2!)",
+    "UPGRADE_DESCRIPTION": "Deal damage equal to all HP lost this combat + !M! to ALL enemies. NL (Currently: !theImmortal:M2!)"
   }
 }

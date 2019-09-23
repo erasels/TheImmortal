@@ -13,7 +13,7 @@ import theImmortal.patches.general.Immortality;
 import theImmortal.ui.ExhaustionPanel;
 import theImmortal.util.UC;
 import theImmortal.vfx.combat.FireIgniteEffect;
-import theImmortal.vfx.combat.ReviveEffect;
+import theImmortal.vfx.combat.unique.ReviveEffect;
 
 import static theImmortal.characters.ImmortalCharacter.Enums.THE_IMMORTAL;
 

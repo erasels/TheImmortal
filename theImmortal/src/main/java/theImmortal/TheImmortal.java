@@ -19,11 +19,11 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theImmortal.cards.variables.MagicNumber2;
 import theImmortal.characters.ImmortalCharacter;
 import theImmortal.mechanics.ImmortalityManager;
 import theImmortal.util.IDCheckDontTouchPls;
 import theImmortal.util.TextureLoader;
-import theImmortal.variables.DefaultCustomVariable;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -155,7 +155,7 @@ public class TheImmortal implements
     @Override
     public void receiveEditCards() {
         pathCheck();
-        BaseMod.addDynamicVariable(new DefaultCustomVariable());
+        BaseMod.addDynamicVariable(new MagicNumber2());
 
         try {
             AutoLoader.addCards();

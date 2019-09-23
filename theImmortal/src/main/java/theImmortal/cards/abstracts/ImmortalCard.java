@@ -51,6 +51,11 @@ public abstract class ImmortalCard extends CustomCard {
     protected boolean upgradeHPCost;
     protected int hpCostUpgrade;
 
+    public int baseMagicNumber2;
+    public int magicNumber2;
+    public boolean isMagicNumber2Modified;
+    public boolean upgradedMagicNumber2;
+
     public ImmortalCard(CardInfo cardInfo, boolean upgradesDescription) {
         this(ImmortalCharacter.Enums.COLOR_IMMORTAL, cardInfo.cardName, cardInfo.cardCost, cardInfo.cardType, cardInfo.cardTarget, cardInfo.cardRarity, upgradesDescription);
     }
@@ -227,6 +232,10 @@ public abstract class ImmortalCard extends CustomCard {
             ((ImmortalCard) card).upgExhaust = this.upgExhaust;
             ((ImmortalCard) card).baseInnate = this.baseInnate;
             ((ImmortalCard) card).upgInnate = this.upgInnate;
+
+            ((ImmortalCard) card).baseMagicNumber2 = this.baseMagicNumber2;
+            ((ImmortalCard) card).magicNumber2 = this.magicNumber2;
+
         }
 
         return card;
@@ -369,11 +378,14 @@ public abstract class ImmortalCard extends CustomCard {
         super.resetAttributes();
         this.hpCost = this.baseHPCost;
         this.isHPCostModified = false;
+        this.magicNumber2 = baseMagicNumber2;
+        this.isMagicNumber2Modified = false;
     }
 
     @Override
     public void applyPowers() {
         this.applyPowersToHPCost();
+        this.applyPowersToMN2();
         super.applyPowers();
     }
 
@@ -383,6 +395,10 @@ public abstract class ImmortalCard extends CustomCard {
         /*if (UC.p.hasPower(SealPower.ID))
             this.hpCost = 0;*/
         if (this.hpCost != this.baseHPCost) this.isHPCostModified = true;
+    }
+
+    private void applyPowersToMN2() {
+        this.isMagicNumber2Modified = magicNumber2 != baseMagicNumber2;
     }
 
     protected void upgradeHPCost(int amount) {
