@@ -29,8 +29,18 @@ public class SummonFlameAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        //first, find a good position
+        //Check if flame exists already
+        for(AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if(!m.isDeadOrEscaped() && m instanceof AbstractFlame) {
+                if(((AbstractFlame)m).ftype == flame) {
+                    ((AbstractFlame) m).upgrade();
+                    isDone = true;
+                    return;
+                }
+            }
+        }
 
+        //find a good position
         float x = MathUtils.random(MIN_X, MAX_X);
         float y = MathUtils.random(MIN_Y, MAX_Y);
 

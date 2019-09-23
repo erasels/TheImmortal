@@ -21,6 +21,7 @@ public class FullFlame extends AbstractFlame {
     public FullFlame(float hb_x, float hb_y) {
         super(hb_x, hb_y, monsterStrings.NAME, ID, MHP);
         TipText = monsterStrings.DIALOG;
+        ftype = FlameType.FULL;
     }
 
     @Override

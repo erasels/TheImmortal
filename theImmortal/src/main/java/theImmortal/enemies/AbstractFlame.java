@@ -24,6 +24,8 @@ public abstract class AbstractFlame extends CustomMonster {
     protected float fireTimer = 0.0F;
     protected static final float FIRE_TIME = 0.025F;
 
+    public FlameType ftype;
+
     protected String[] TipText;
 
     public enum FlameType {
