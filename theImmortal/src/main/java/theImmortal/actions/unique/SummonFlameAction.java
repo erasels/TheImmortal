@@ -63,8 +63,8 @@ public class SummonFlameAction extends AbstractGameAction {
         float actualY = m.hb.y;
         float adjustDistance = 0;
         float adjustAngle = 0;
-        float xOffset = 0;
-        float yOffset = 0;
+        float xOffset;
+        float yOffset;
         boolean success = false;
 
         //check if this is a fine position.
