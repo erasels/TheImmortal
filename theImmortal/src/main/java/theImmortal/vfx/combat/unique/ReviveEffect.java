@@ -1,4 +1,4 @@
-package theImmortal.vfx.combat;
+package theImmortal.vfx.combat.unique;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
