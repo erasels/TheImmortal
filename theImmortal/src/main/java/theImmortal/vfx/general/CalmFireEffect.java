@@ -18,16 +18,20 @@ public class CalmFireEffect extends AbstractGameEffect {
     private boolean flippedX = MathUtils.randomBoolean();
     private static final float DUR = 0.7F;
 
-    public CalmFireEffect(float x, float y) {
+    public CalmFireEffect(float x, float y, Color col) {
         this.x = x + MathUtils.random(-5.0F, 5.0F) * Settings.scale;
         this.y = y + MathUtils.random(-5.0F, 5.0F) * Settings.scale;
         this.vX = MathUtils.random(-30.0F, 30.0F) * Settings.scale;
         this.vY = MathUtils.random(20.0F, 60.0F) * Settings.scale;
         this.duration = DUR;
-        this.color = Color.ORANGE.cpy();
+        this.color = col.cpy();
         this.color.a = 0.0F;
         this.scale = MathUtils.random(0.8F, 0.9F) * Settings.scale;
         this.renderBehind = MathUtils.randomBoolean();
+    }
+
+    public CalmFireEffect(float x, float y) {
+        this(x, y, Color.ORANGE);
     }
 
     private Texture getImg() {
