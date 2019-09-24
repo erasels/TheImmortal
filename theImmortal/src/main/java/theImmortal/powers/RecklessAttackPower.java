@@ -2,7 +2,6 @@ package theImmortal.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -20,7 +19,7 @@ import theImmortal.util.UC;
 import static theImmortal.util.UC.atb;
 import static theImmortal.util.UC.doVfx;
 
-public class RecklessAttackPower extends AbstractImmortalPower implements CloneablePowerInterface, CardHPLossHook, NonStackablePower {
+public class RecklessAttackPower extends AbstractImmortalPower implements CloneablePowerInterface, CardHPLossHook {
     public static final String POWER_ID = TheImmortal.makeID("RecklessAttack");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
@@ -55,6 +54,12 @@ public class RecklessAttackPower extends AbstractImmortalPower implements Clonea
     @Override
     public int modifyHPCost(AbstractCard c, int hpcost) {
         return c.costForTurn < 1?hpcost:c.costForTurn * amount;
+    }
+
+    @Override
+    public void stackPower(int i) {
+        super.stackPower(-amount);
+        updateDescription();
     }
 
 
