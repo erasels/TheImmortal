@@ -311,7 +311,7 @@ public abstract class ImmortalCard extends CustomCard {
                     Color costColor = Color.WHITE.cpy();
                     if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(card)) {
                         if (UC.getHPCostModified(card)) {
-                            if (UC.getHPCost(card) > UC.getBaseHPCost(card)) {
+                            if (UC.getHPCost(card) > UC.getBaseHPCost(card) && UC.getHPCost(card) > 0) {
                                 costColor = ENERGY_COST_RESTRICTED_COLOR;
                             } else if (UC.getHPCost(card) < UC.getBaseHPCost(card)) {
                                 costColor = ENERGY_COST_MODIFIED_COLOR;
