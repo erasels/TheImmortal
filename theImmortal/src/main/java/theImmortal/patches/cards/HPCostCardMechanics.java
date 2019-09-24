@@ -16,11 +16,9 @@ public class HPCostCardMechanics {
     public static class hpCostCapture {
         @SpireInsertPatch(locator = Locator.class)
         public static void patch(AbstractPlayer __instance, AbstractCard c, AbstractMonster m, int energyOnUse) {
-            if(c instanceof ImmortalCard) {
-                int hpcost = ((ImmortalCard)c).hpCost;
-                if(hpcost > 0) {
-                    UC.doDmg(UC.p, hpcost, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true);
-                }
+            int hpcost = UC.getHPCost(c);
+            if (hpcost > 0) {
+                UC.doDmg(UC.p, hpcost, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true);
             }
         }
 
@@ -37,9 +35,7 @@ public class HPCostCardMechanics {
     @SpirePatch(clz = AbstractCard.class, method = "renderEnergy", paramtypez = {SpriteBatch.class})
     public static class RunicCardElementRenderInLibraryPatch {
         public static void Postfix(AbstractCard __instance, SpriteBatch sb) {
-            if (__instance instanceof ImmortalCard) {
-                ImmortalCard.renderHPCost((ImmortalCard)__instance, sb);
-            }
+            ImmortalCard.renderHPCost( __instance, sb);
         }
     }
 }

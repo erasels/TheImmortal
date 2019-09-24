@@ -7,12 +7,14 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theImmortal.patches.cards.HPLossCardsPatches;
 import theImmortal.patches.combat.BurstMechanics;
 
 public class UC {
@@ -101,5 +103,27 @@ public class UC {
             default:
                 return Color.RED;
         }
+    }
+
+
+    //HPLossCards methods
+    public static int getHPCost(AbstractCard c) {
+        return HPLossCardsPatches.HPLossFields.hpCost.get(c);
+    }
+    public static int getBaseHPCost(AbstractCard c) {
+        return HPLossCardsPatches.HPLossFields.baseHPCost.get(c);
+    }
+    public static boolean getHPCostModified(AbstractCard c) {
+        return HPLossCardsPatches.HPLossFields.isHPCostModified.get(c);
+    }
+
+    public static void setHPCost(AbstractCard c, int amount) {
+        HPLossCardsPatches.HPLossFields.hpCost.set(c, amount);
+    }
+    public static void setBaseHPCost(AbstractCard c, int amount) {
+        HPLossCardsPatches.HPLossFields.baseHPCost.set(c, amount);
+    }
+    public static void setHPCostModified(AbstractCard c, boolean state) {
+        HPLossCardsPatches.HPLossFields.isHPCostModified.set(c, state);
     }
 }

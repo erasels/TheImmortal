@@ -16,10 +16,12 @@ import theImmortal.characters.ImmortalCharacter;
 import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 import theImmortal.util.TextureLoader;
+import theImmortal.util.UC;
 
 import java.lang.reflect.Field;
 
 import static theImmortal.TheImmortal.makeID;
+import static theImmortal.util.UC.*;
 
 public abstract class ImmortalCard extends CustomCard {
     protected CardStrings cardStrings;
@@ -44,12 +46,11 @@ public abstract class ImmortalCard extends CustomCard {
     protected boolean baseInnate;
     protected boolean upgInnate;
 
-    public int baseHPCost;
-    public int hpCost;
-    public boolean isHPCostModified;
     protected boolean upgradedHPCost;
     protected boolean upgradeHPCost;
     protected int hpCostUpgrade;
+
+    public boolean hpCostCondition;
 
     public int baseMagicNumber2;
     public int magicNumber2;
@@ -77,10 +78,6 @@ public abstract class ImmortalCard extends CustomCard {
 
         this.baseCost = cost;
 
-        this.baseHPCost = -1;
-        this.hpCost = -1;
-        this.isHPCostModified = false;
-
         this.upgradesDescription = upgradesDescription;
 
         this.upgradedHPCost = false;
@@ -97,6 +94,7 @@ public abstract class ImmortalCard extends CustomCard {
         this.magicUpgrade = 0;
         this.hpCostUpgrade = 0;
 
+        hpCostCondition = true;
 
 
         InitializeCard();
@@ -153,12 +151,13 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     public void setHPCost(int hpCost, int hpCostUpgrade) {
-        this.baseHPCost = this.hpCost = hpCost;
+        setBaseHPCost(this, hpCost);
+        UC.setHPCost(this, hpCost);
         if (hpCostUpgrade != 0) {
             this.upgradeHPCost = true;
             this.hpCostUpgrade = hpCostUpgrade;
         }
-        if(!this.tags.contains(CardENUMs.HPLOSS)) {
+        if (!this.tags.contains(CardENUMs.HPLOSS)) {
             this.tags.add(CardENUMs.HPLOSS);
         }
     }
@@ -183,12 +182,12 @@ public abstract class ImmortalCard extends CustomCard {
         String packageName = this.getClass().getPackage().getName();
 
         String directParent;
-        if(packageName.contains(".")) {
+        if (packageName.contains(".")) {
             directParent = packageName.substring(1 + packageName.lastIndexOf("."));
         } else {
             directParent = packageName;
         }
-        switch(directParent) {
+        switch (directParent) {
             case "common":
                 return CardRarity.COMMON;
             case "uncommon":
@@ -212,9 +211,6 @@ public abstract class ImmortalCard extends CustomCard {
             ((ImmortalCard) card).upgradesDescription = this.upgradesDescription;
 
             ((ImmortalCard) card).baseCost = this.baseCost;
-
-            ((ImmortalCard) card).baseHPCost = this.baseHPCost;
-            ((ImmortalCard) card).hpCost = this.hpCost;
 
             ((ImmortalCard) card).upgradeCost = this.upgradeCost;
             ((ImmortalCard) card).upgradeDamage = this.upgradeDamage;
@@ -296,45 +292,47 @@ public abstract class ImmortalCard extends CustomCard {
     private static Color renderColor = Color.WHITE.cpy();
 
     //TODO: Make this render in the big card view
-    public static void renderHPCost(ImmortalCard card, SpriteBatch sb) {
+    public static void renderHPCost(AbstractCard card, SpriteBatch sb) {
         float drawX = card.current_x - 256.0F;
         float drawY = card.current_y - 256.0F;
 
         if (HP_COST_ORB == null) {
             HP_COST_ORB = TextureLoader.getTexture(TheImmortal.makeImagePath("512/CardHPCostOrb.png"));
         }
-        if(ENERGY_COST_MODIFIED_COLOR == null){
+        if (ENERGY_COST_MODIFIED_COLOR == null) {
             getColorConstants();
         }
 
         if (!card.isLocked && card.isSeen) {
-            if (card.hpCost > -1) {
-                card.renderHelper(sb, renderColor, HP_COST_ORB, drawX, drawY);
+            if (getHPCost(card) > -1) {
+                if (!(card instanceof ImmortalCard) || ((ImmortalCard) card).hpCostCondition) {
+                    ImmortalCard.renderHelper(card, sb, renderColor, HP_COST_ORB, drawX, drawY);
 
-                String msg = Integer.toString(card.hpCost);
-                Color costColor = Color.WHITE.cpy();
-                if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(card)) {
-                    if (card.isHPCostModified) {
-                        if (card.hpCost > card.baseHPCost) {
-                            costColor = ENERGY_COST_RESTRICTED_COLOR;
-                        } else if (card.hpCost < card.baseHPCost) {
-                            costColor = ENERGY_COST_MODIFIED_COLOR;
+                    String msg = Integer.toString(getHPCost(card));
+                    Color costColor = Color.WHITE.cpy();
+                    if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(card)) {
+                        if (getHPCostModified(card)) {
+                            if (getHPCost(card) > getBaseHPCost(card)) {
+                                costColor = ENERGY_COST_RESTRICTED_COLOR;
+                            } else if (getHPCost(card) < getBaseHPCost(card)) {
+                                costColor = ENERGY_COST_MODIFIED_COLOR;
+                            }
                         }
                     }
-                }
-                costColor.a = card.transparency;
+                    costColor.a = card.transparency;
 
-                FontHelper.renderRotatedText(sb, getHPCostFont(card), msg, card.current_x,
-                        card.current_y, -132.0F * card.drawScale * Settings.scale,
-                        129.0F * card.drawScale * Settings.scale, card.angle,
-                        true, costColor);
+                    FontHelper.renderRotatedText(sb, getHPCostFont(card), msg, card.current_x,
+                            card.current_y, -132.0F * card.drawScale * Settings.scale,
+                            129.0F * card.drawScale * Settings.scale, card.angle,
+                            true, costColor);
+                }
             }
         }
     }
 
-    private void renderHelper(SpriteBatch sb, Color color, Texture img, float drawX, float drawY) {
+    private static void renderHelper(AbstractCard __instance, SpriteBatch sb, Color color, Texture img, float drawX, float drawY) {
         sb.setColor(color);
-        sb.draw(img, drawX , drawY, 256.0F, 256.0F, 512.0F, 512.0F, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle, 0, 0, 512, 512, false, false);
+        sb.draw(img, drawX, drawY, 256.0F, 256.0F, 512.0F, 512.0F, __instance.drawScale * Settings.scale, __instance.drawScale * Settings.scale, __instance.angle, 0, 0, 512, 512, false, false);
     }
 
     private static BitmapFont getHPCostFont(AbstractCard card) {
@@ -368,33 +366,22 @@ public abstract class ImmortalCard extends CustomCard {
     public void displayUpgrades() {
         super.displayUpgrades();
         if (this.upgradedHPCost) {
-            this.hpCost = this.baseHPCost;
-            this.isHPCostModified = true;
+            UC.setHPCost(this, getBaseHPCost(this));
+            setHPCostModified(this, true);
         }
     }
 
     @Override
     public void resetAttributes() {
         super.resetAttributes();
-        this.hpCost = this.baseHPCost;
-        this.isHPCostModified = false;
         this.magicNumber2 = baseMagicNumber2;
         this.isMagicNumber2Modified = false;
     }
 
     @Override
     public void applyPowers() {
-        this.applyPowersToHPCost();
         this.applyPowersToMN2();
         super.applyPowers();
-    }
-
-    private void applyPowersToHPCost() {
-        this.isHPCostModified = false;
-        this.hpCost = this.baseHPCost;
-        /*if (UC.p.hasPower(SealPower.ID))
-            this.hpCost = 0;*/
-        if (this.hpCost != this.baseHPCost) this.isHPCostModified = true;
     }
 
     private void applyPowersToMN2() {
@@ -402,8 +389,8 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     protected void upgradeHPCost(int amount) {
-        this.baseHPCost += amount;
-        this.hpCost = this.baseHPCost;
+        setBaseHPCost(this, getBaseHPCost(this) + amount);
+        UC.setHPCost(this, getBaseHPCost(this));
         this.upgradedHPCost = true;
     }
 }
