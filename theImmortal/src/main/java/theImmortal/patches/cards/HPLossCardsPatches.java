@@ -53,9 +53,6 @@ public class HPLossCardsPatches {
                     UC.setHPCost(__instance, ((CardHPLossHook) r).modifyHPCost(__instance, UC.getHPCost(__instance)));
                 }
             }
-            if (UC.getHPCost(__instance) < 0) {
-                UC.setHPCost(__instance, 0);
-            }
             UC.setHPCostModified(__instance, UC.getHPCost(__instance) != UC.getBaseHPCost(__instance));
         }
     }
