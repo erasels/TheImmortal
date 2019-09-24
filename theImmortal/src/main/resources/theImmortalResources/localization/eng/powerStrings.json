@@ -6,5 +6,12 @@
       " damage, then reduce #Ignite by #byhalf its amount (rounded up).",
       "At the end of the monsters' turn, take #b"
     ]
+  },
+  "theImmortal:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTIONS": [
+      "The next card you play costs #b0 [REMOVE_SPACE]. Lose HP equal to #b",
+      " times its original energy cost instead."
+    ]
   }
 }

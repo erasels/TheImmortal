@@ -37,5 +37,9 @@
     "NAME": "Flare",
     "DESCRIPTION": "Deal damage equal to all HP lost this combat to ALL enemies. NL (Currently: !theImmortal:M2!)",
     "UPGRADE_DESCRIPTION": "Deal damage equal to all HP lost this combat + !M! to ALL enemies. NL (Currently: !theImmortal:M2!)"
+  },
+  "theImmortal:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTION": "The next card you play costs 0. Lose HP equal to !M! times its original energy cost instead."
   }
 }
