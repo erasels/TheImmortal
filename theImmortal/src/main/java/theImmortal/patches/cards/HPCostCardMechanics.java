@@ -18,7 +18,7 @@ public class HPCostCardMechanics {
         public static void patch(AbstractPlayer __instance, AbstractCard c, AbstractMonster m, int energyOnUse) {
             int hpcost = UC.getHPCost(c);
             if (hpcost > 0) {
-                UC.doDmg(UC.p, hpcost, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true);
+                UC.doDmg(UC.p(), hpcost, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true);
             }
         }
 

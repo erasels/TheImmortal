@@ -27,7 +27,7 @@ public class ImmortalityManager {
     public static void exhaustionLogic(AbstractCard c, AbstractCreature target) {
         int ex = getExhaustion();
         if(ex > 0) {
-            UC.doDmg(UC.p, ex, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true, true);
+            UC.doDmg(UC.p(), ex, DamageInfo.DamageType.HP_LOSS, AbstractGameAction.AttackEffect.NONE, true, true);
             UC.doVfx(new FireIgniteEffect(ImmortalityManager.getExhaustionPanel().current_x, ImmortalityManager.getExhaustionPanel().current_y, ex*5));
         }
     }
@@ -35,13 +35,13 @@ public class ImmortalityManager {
     public static boolean deathLogic() {
         if(isImmortal()) {
             if (getExhaustion() < MAX_DEATH_COUNT) {
-                UC.p.isDead = false;
+                UC.p().isDead = false;
                 addExhaustion(1);
-                UC.atb(new ClearAllDebuffsAction(UC.p));
+                UC.atb(new ClearAllDebuffsAction(UC.p()));
                 AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
                 AbstractDungeon.player.healthBarUpdatedEvent();
 
-                UC.doVfx(new ReviveEffect(UC.p));
+                UC.doVfx(new ReviveEffect(UC.p()));
 
                 return true;
             }
@@ -61,14 +61,14 @@ public class ImmortalityManager {
     }
 
     public static void setExhaustion(int newVal) {
-        if(Immortality.ImmortalityFields.exhaustion.get(UC.p) != null) {
+        if(Immortality.ImmortalityFields.exhaustion.get(AbstractDungeon.player) != null) {
             Immortality.ImmortalityFields.exhaustion.set(AbstractDungeon.player, newVal);
         }
     }
 
     public static void addExhaustion(int addVal) {
         if(CardCrawlGame.isInARun()) {
-            Immortality.ImmortalityFields.exhaustion.set(AbstractDungeon.player, Immortality.ImmortalityFields.exhaustion.get(AbstractDungeon.player) + addVal);
+            Immortality.ImmortalityFields.exhaustion.set(AbstractDungeon.player, Immortality.ImmortalityFields.exhaustion.get(UC.p()) + addVal);
         }
     }
 

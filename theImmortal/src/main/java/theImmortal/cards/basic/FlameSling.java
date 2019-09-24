@@ -40,7 +40,7 @@ public class FlameSling extends ImmortalCard {
         UC.doPow(m, new IgnitePower(m, magicNumber));
         UC.doPow(m, new VulnerablePower(m, VULN, false));
         if(upgraded && UC.checkBurst()) {
-            UC.atb(new DrawCardAction(UC.p, DRAW));
+            UC.atb(new DrawCardAction(UC.p(), DRAW));
         }
     }
 

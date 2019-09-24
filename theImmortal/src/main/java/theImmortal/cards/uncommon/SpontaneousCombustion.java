@@ -43,7 +43,7 @@ public class SpontaneousCombustion extends ImmortalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         UC.doVfx(new BetterScreenOnFireEffect(1.0f, 1.0f, "ATTACK_FLAME_BARRIER"));
         for(int i = 0; i < magicNumber; i ++) {
-            UC.atb(new DamageAllAction(UC.p, damage, false, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, false));
+            UC.atb(new DamageAllAction(UC.p(), damage, false, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, false));
         }
     }
 

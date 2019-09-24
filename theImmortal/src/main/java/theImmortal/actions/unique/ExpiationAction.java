@@ -19,7 +19,7 @@ public class ExpiationAction extends AbstractGameAction {
         for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
             if(c.type == AbstractCard.CardType.ATTACK) {
                 UC.doDef(blockAmt);
-                UC.atb(new HealAction(UC.p, UC.p, healAmt));
+                UC.atb(new HealAction(UC.p(), UC.p(), healAmt));
             }
         }
         isDone = true;

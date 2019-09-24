@@ -42,7 +42,7 @@ public class Blitz extends ImmortalCard {
             UC.doDmg(m, this.damage, MathUtils.randomBoolean() ? AbstractGameAction.AttackEffect.SLASH_VERTICAL : AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
         }
         if(upgraded) {
-            UC.atb(new DrawCardAction(UC.p, magicNumber));
+            UC.atb(new DrawCardAction(UC.p(), magicNumber));
         }
     }
 }

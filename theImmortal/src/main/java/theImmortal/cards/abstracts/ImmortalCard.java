@@ -21,7 +21,6 @@ import theImmortal.util.UC;
 import java.lang.reflect.Field;
 
 import static theImmortal.TheImmortal.makeID;
-import static theImmortal.util.UC.*;
 
 public abstract class ImmortalCard extends CustomCard {
     protected CardStrings cardStrings;
@@ -151,7 +150,7 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     public void setHPCost(int hpCost, int hpCostUpgrade) {
-        setBaseHPCost(this, hpCost);
+        UC.setBaseHPCost(this, hpCost);
         UC.setHPCost(this, hpCost);
         if (hpCostUpgrade != 0) {
             this.upgradeHPCost = true;
@@ -304,17 +303,17 @@ public abstract class ImmortalCard extends CustomCard {
         }
 
         if (!card.isLocked && card.isSeen) {
-            if (getHPCost(card) > -1) {
+            if (UC.getHPCost(card) > -1) {
                 if (!(card instanceof ImmortalCard) || ((ImmortalCard) card).hpCostCondition) {
                     ImmortalCard.renderHelper(card, sb, renderColor, HP_COST_ORB, drawX, drawY);
 
-                    String msg = Integer.toString(getHPCost(card));
+                    String msg = Integer.toString(UC.getHPCost(card));
                     Color costColor = Color.WHITE.cpy();
                     if (AbstractDungeon.player != null && AbstractDungeon.player.hand.contains(card)) {
-                        if (getHPCostModified(card)) {
-                            if (getHPCost(card) > getBaseHPCost(card)) {
+                        if (UC.getHPCostModified(card)) {
+                            if (UC.getHPCost(card) > UC.getBaseHPCost(card)) {
                                 costColor = ENERGY_COST_RESTRICTED_COLOR;
-                            } else if (getHPCost(card) < getBaseHPCost(card)) {
+                            } else if (UC.getHPCost(card) < UC.getBaseHPCost(card)) {
                                 costColor = ENERGY_COST_MODIFIED_COLOR;
                             }
                         }
@@ -366,8 +365,8 @@ public abstract class ImmortalCard extends CustomCard {
     public void displayUpgrades() {
         super.displayUpgrades();
         if (this.upgradedHPCost) {
-            UC.setHPCost(this, getBaseHPCost(this));
-            setHPCostModified(this, true);
+            UC.setHPCost(this, UC.getBaseHPCost(this));
+            UC.setHPCostModified(this, true);
         }
     }
 
@@ -389,8 +388,8 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     protected void upgradeHPCost(int amount) {
-        setBaseHPCost(this, getBaseHPCost(this) + amount);
-        UC.setHPCost(this, getBaseHPCost(this));
+        UC.setBaseHPCost(this, UC.getBaseHPCost(this) + amount);
+        UC.setHPCost(this, UC.getBaseHPCost(this));
         this.upgradedHPCost = true;
     }
 }
