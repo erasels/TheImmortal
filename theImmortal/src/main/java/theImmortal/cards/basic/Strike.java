@@ -2,7 +2,6 @@ package theImmortal.cards.basic;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
@@ -32,16 +31,12 @@ public class Strike extends ImmortalCard {
         setDamage(DAMAGE, UPG_DAMAGE);
 
         tags.add(BASIC_STRIKE);
+        tags.add(CardTags.STARTER_STRIKE);
         tags.add(CardTags.STRIKE);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         UC.doDmg(m,this.damage, MathUtils.randomBoolean() ? AbstractGameAction.AttackEffect.SLASH_VERTICAL : AbstractGameAction.AttackEffect.BLUNT_LIGHT);
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Strike();
     }
 }

@@ -1,6 +1,5 @@
 package theImmortal.cards.basic;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
@@ -29,15 +28,11 @@ public class Defend extends ImmortalCard {
 
         setBlock(BLOCK, UPG_BLOCK);
         tags.add(BASIC_DEFEND);
+        tags.add(CardTags.STARTER_DEFEND);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         UC.doDef(block);
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Defend();
     }
 }
