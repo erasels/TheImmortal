@@ -19,11 +19,13 @@ import theImmortal.patches.combat.BurstMechanics;
 
 public class UC {
     //Common references
-    public static AbstractPlayer p = AbstractDungeon.player;
+    public static AbstractPlayer p() {
+        return AbstractDungeon.player;
+    }
 
     //Checks
     public static boolean checkBurst() {
-        return BurstMechanics.PlayerBurstField.isBurst.get(p);
+        return BurstMechanics.PlayerBurstField.isBurst.get(p());
     }
 
     //Actionmanager
@@ -58,14 +60,14 @@ public class UC {
 
     public static void doDmg(AbstractCreature target, int amount, DamageInfo.DamageType dt, AbstractGameAction.AttackEffect ae, boolean fast, boolean top) {
         if (top) {
-            att(new DamageAction(target, new DamageInfo(p, amount, dt), ae, fast));
+            att(new DamageAction(target, new DamageInfo(p(), amount, dt), ae, fast));
         } else {
-            atb(new DamageAction(target, new DamageInfo(p, amount, dt), ae, fast));
+            atb(new DamageAction(target, new DamageInfo(p(), amount, dt), ae, fast));
         }
     }
 
     public static void doDef(int amount) {
-        atb(new GainBlockAction(p, p, amount));
+        atb(new GainBlockAction(p(), p(), amount));
     }
 
     public static void doPow(AbstractCreature target, AbstractPower p) {
@@ -73,7 +75,7 @@ public class UC {
     }
 
     public static void doPow(AbstractCreature target, AbstractPower p, boolean top) {
-        doPow(UC.p, target, p, top);
+        doPow(UC.p(), target, p, top);
     }
 
     public static void doPow(AbstractCreature source, AbstractCreature target, AbstractPower p, boolean top) {
