@@ -1,7 +1,6 @@
 package theImmortal.cards.uncommon;
 
 import com.badlogic.gdx.graphics.Color;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -39,10 +38,5 @@ public class Expiation extends ImmortalCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         UC.doVfx(new BubbleEffect(Color.GOLDENROD, "TINGSHA", (((AbstractDungeon.player.hb.cY) + (64f* Settings.scale)))));
         UC.atb(new ExpiationAction(block, magicNumber));
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Expiation();
     }
 }

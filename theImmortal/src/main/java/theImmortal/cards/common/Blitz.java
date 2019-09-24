@@ -3,7 +3,6 @@ package theImmortal.cards.common;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
@@ -45,10 +44,5 @@ public class Blitz extends ImmortalCard {
         if(upgraded) {
             UC.atb(new DrawCardAction(UC.p, magicNumber));
         }
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Blitz();
     }
 }

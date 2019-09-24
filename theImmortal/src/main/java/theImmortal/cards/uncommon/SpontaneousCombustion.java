@@ -2,7 +2,6 @@ package theImmortal.cards.uncommon;
 
 import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -51,10 +50,5 @@ public class SpontaneousCombustion extends ImmortalCard {
     @Override
     public float getTitleFontSize() {
         return 15f;
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new SpontaneousCombustion();
     }
 }

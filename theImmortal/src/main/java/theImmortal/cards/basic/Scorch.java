@@ -1,7 +1,6 @@
 package theImmortal.cards.basic;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
@@ -48,10 +47,5 @@ public class Scorch extends ImmortalCard {
                 UC.doDmg(m, damage, AbstractGameAction.AttackEffect.FIRE);
             }
         }
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Scorch();
     }
 }

@@ -2,7 +2,6 @@ package theImmortal.cards.rare;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -46,10 +45,5 @@ public class Flare extends ImmortalCard {
     public void applyPowers() {
         magicNumber2 = GameActionManager.damageReceivedThisCombat;
         super.applyPowers();
-    }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Flare();
     }
 }

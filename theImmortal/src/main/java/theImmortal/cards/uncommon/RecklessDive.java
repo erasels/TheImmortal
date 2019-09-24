@@ -61,9 +61,4 @@ public class RecklessDive extends ImmortalCard {
                     AbstractDungeon.player.hand.refreshHandLayout();
                 }));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new RecklessDive();
-    }
 }
