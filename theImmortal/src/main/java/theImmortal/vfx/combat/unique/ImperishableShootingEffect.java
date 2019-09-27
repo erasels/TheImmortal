@@ -18,7 +18,7 @@ import theImmortal.vfx.combat.FireIgniteEffect;
 import theImmortal.vfx.general.RedFireBurstParticleEffect;
 
 public class ImperishableShootingEffect extends AbstractGameEffect {
-    private static final float FREE_TIME = 1.5f;
+    private static final float FREE_TIME = Settings.FAST_MODE ?1.5f:2.0f;
 
     private static final float LOCK_ON_TIME = 0.4f;
     private static final float FAST_LOCK_ON_TIME = 0.2f;
@@ -166,7 +166,7 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
                     vfxTimer = FLAME_EFFECT_TIMER;
                 }
             }
-            vfxTimer -= Gdx.graphics.getRawDeltaTime();
+            vfxTimer -= Gdx.graphics.getDeltaTime();
         } else {
             AbstractDungeon.effectsQueue.add(new FireIgniteEffect(this.x, this.y, 15));
         }
