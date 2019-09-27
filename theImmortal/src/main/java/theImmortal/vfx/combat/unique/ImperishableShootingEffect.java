@@ -71,10 +71,11 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
     @Override
     public void update() {
         if (target.isDeadOrEscaped()) {
-            if (!AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead() && duration > 0.0f)
+            if (!AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead() && duration > 0.0f) {
                 target = AbstractDungeon.getRandomMonster();
-            else
+            } else {
                 target = null;
+            }
 
             if (target == null) {
                 AbstractDungeon.effectsQueue.add(new FlashAtkImgEffect(x, y, AbstractGameAction.AttackEffect.FIRE, false));
@@ -158,7 +159,11 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
             if(vfxTimer<0) {
                 AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, UC.getRandomFireColor()));
                 AbstractDungeon.effectsQueue.add(new RedFireBurstParticleEffect(this.x, this.y));
-                vfxTimer = FLAME_EFFECT_TIMER;
+                if(lockedOn) {
+                    vfxTimer = FLAME_EFFECT_TIMER/3.0f;
+                } else {
+                    vfxTimer = FLAME_EFFECT_TIMER;
+                }
             }
             vfxTimer -= Gdx.graphics.getRawDeltaTime();
         } else {
