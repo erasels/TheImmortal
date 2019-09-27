@@ -14,6 +14,7 @@ public class ImperishableShootingAction extends AbstractGameAction {
 
     private float x;
     private float y;
+    private int counter = 0;
 
     private static final float MAX_DURATION = 10.0f;
 
@@ -42,14 +43,20 @@ public class ImperishableShootingAction extends AbstractGameAction {
             if (target == null) {
                 AbstractCreature t = AbstractDungeon.getRandomMonster();
                 if (t != null) {
-                    CardCrawlGame.sound.play("CARD_EXHAUST", 0.1F);
+                    if(counter%3 == 0) {
+                        CardCrawlGame.sound.play("CARD_EXHAUST", 0.1F);
+                    }
+                    counter++;
                     ImperishableShootingEffect e = new ImperishableShootingEffect(x, y, t, info);
                     AbstractDungeon.effectsQueue.add(e);
                     missileEffects.add(e);
                 }
             } else {
                 if (!target.isDeadOrEscaped()) {
-                    CardCrawlGame.sound.play("CARD_EXHAUST", 0.1F);
+                    if(counter%3 == 0) {
+                        CardCrawlGame.sound.play("CARD_EXHAUST", 0.1F);
+                    }
+                    counter++;
                     ImperishableShootingEffect e = new ImperishableShootingEffect(x, y, target, info);
                     AbstractDungeon.effectsQueue.add(e);
                     missileEffects.add(e);
