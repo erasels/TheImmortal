@@ -45,6 +45,9 @@ public class ImperishableShooting extends ImmortalCard {
     public void applyPowers() {
         magicNumber2 = baseMagicNumber2;
         super.applyPowers();
+        if(baseMagicNumber > MAGIC) {
+            isMagicNumberModified = true;
+        }
     }
 
     @Override

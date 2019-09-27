@@ -23,6 +23,8 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
     private static final float LOCK_ON_TIME = 0.4f;
     private static final float FAST_LOCK_ON_TIME = 0.2f;
 
+    public static final float FLAME_EFFECT_TIMER = 0.03f;
+
     private float x;
     private float y;
     private float sX;
@@ -40,6 +42,7 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
     private float freeDuration;
     private boolean lockedOn;
     private boolean finalApproach;
+    private float vfxTimer;
 
     public ImperishableShootingEffect(float x, float y, AbstractCreature target, DamageInfo info) {
         //start position
@@ -62,6 +65,7 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
         this.target = target;
         this.dmg = info;
         this.scale = 0.2f;
+        vfxTimer = 0;
     }
 
     @Override
@@ -151,8 +155,12 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
         }
 
         if (!this.isDone) {
+            if(vfxTimer<0) {
                 AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, UC.getRandomFireColor()));
                 AbstractDungeon.effectsQueue.add(new RedFireBurstParticleEffect(this.x, this.y));
+                vfxTimer = FLAME_EFFECT_TIMER;
+            }
+            vfxTimer -= Gdx.graphics.getRawDeltaTime();
         } else {
             AbstractDungeon.effectsQueue.add(new FireIgniteEffect(this.x, this.y, 15));
         }
