@@ -16,20 +16,20 @@
     "DESCRIPTION": "Ignited creatures take damage at the end of the monsters' turn. Each turn, Ignited is reduced by #bhalf its amount (rounded up)."
   },
   {
-    "PROPER_NAME": "Flame",
-    "NAMES": [
-      "flame",
-      "flame.",
-      "flames"
-    ],
-    "DESCRIPTION": "An enemy that doesn't attack and does something on death. Summoning multiple of the same type will upgrade the existing flame instead. NL Full = Deal damage equal to health. NL Pure = Remove debuffs from enemies and deal damage for each removed. NL Wild = Transfer debuffs to enemies."
-  },
-  {
     "PROPER_NAME": "Full Flame",
     "NAMES": [
       "full flame",
       "full_flame"
     ],
     "DESCRIPTION": "Deals damage equal to health on death."
+  },
+  {
+    "PROPER_NAME": "Flame",
+    "NAMES": [
+      "flame",
+      "flame.",
+      "flames"
+    ],
+    "DESCRIPTION": "An enemy that doesn't attack and does something on death. Summoning multiple of the same type will upgrade the existing flame instead."
   }
 ]
