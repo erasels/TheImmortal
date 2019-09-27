@@ -12,10 +12,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theImmortal.enemies.AbstractFlame;
 import theImmortal.patches.cards.HPLossCardsPatches;
 import theImmortal.patches.combat.BurstMechanics;
+
+import java.util.ArrayList;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class UC {
     //Common references
@@ -107,14 +113,24 @@ public class UC {
         }
     }
 
+    //Getters
+    public static AbstractMonster getRandomFlame(Predicate<AbstractMonster> exclusion) {
+        ArrayList<AbstractMonster> mons = AbstractDungeon.getMonsters().monsters.stream().filter(m -> m instanceof AbstractFlame).collect(Collectors.toCollection(ArrayList::new));
+        if (exclusion != null) {
+            mons = mons.stream().filter(exclusion).collect(Collectors.toCollection(ArrayList::new));
+        }
+        return mons.get(AbstractDungeon.cardRandomRng.random(mons.size() - 1));
+    }
 
     //HPLossCards methods
     public static int getHPCost(AbstractCard c) {
         return HPLossCardsPatches.HPLossFields.hpCost.get(c);
     }
+
     public static int getBaseHPCost(AbstractCard c) {
         return HPLossCardsPatches.HPLossFields.baseHPCost.get(c);
     }
+
     public static boolean getHPCostModified(AbstractCard c) {
         return HPLossCardsPatches.HPLossFields.isHPCostModified.get(c);
     }
@@ -122,9 +138,11 @@ public class UC {
     public static void setHPCost(AbstractCard c, int amount) {
         HPLossCardsPatches.HPLossFields.hpCost.set(c, amount);
     }
+
     public static void setBaseHPCost(AbstractCard c, int amount) {
         HPLossCardsPatches.HPLossFields.baseHPCost.set(c, amount);
     }
+
     public static void setHPCostModified(AbstractCard c, boolean state) {
         HPLossCardsPatches.HPLossFields.isHPCostModified.set(c, state);
     }
