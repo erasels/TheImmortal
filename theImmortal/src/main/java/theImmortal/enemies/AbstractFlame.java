@@ -53,7 +53,7 @@ public abstract class AbstractFlame extends CustomMonster {
     @Override
     public void update() {
         super.update();
-        if(hb.hovered) {
+        if (!isDead && hb.hovered) {
             TipHelper.renderGenericTip(drawX + ((hb_w / 2.0f)), drawY + ((hb_h / 2.0f)), name, TipText[0]);
         }
         if (!this.isDying) {
@@ -75,10 +75,10 @@ public abstract class AbstractFlame extends CustomMonster {
                 if (!m.isDeadOrEscaped() && !(m instanceof AbstractFlame)) {
                     return;
                 }
-
-                AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(this));
-                AbstractDungeon.actionManager.addToTop(new SuicideAction(this, false));
             }
+
+            AbstractDungeon.actionManager.addToTop(new HideHealthBarAction(this));
+            AbstractDungeon.actionManager.addToTop(new SuicideAction(this, false));
         }
     }
 
