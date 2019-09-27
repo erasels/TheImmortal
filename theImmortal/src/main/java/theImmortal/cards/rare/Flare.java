@@ -19,7 +19,7 @@ public class Flare extends ImmortalCard {
             "Flare",
             1,
             CardType.ATTACK,
-            CardTarget.SELF
+            CardTarget.ALL_ENEMY
     );
 
     public final static String ID = makeID(cardInfo.cardName);
