@@ -3,7 +3,7 @@
     "PROPER_NAME": "Burst",
     "NAMES": [
       "burst",
-      "Burst:"
+      "burst:"
     ],
     "DESCRIPTION": "This effect triggers if the last card played was an #yAttack [REMOVE_SPACE]."
   },
@@ -16,14 +16,20 @@
     "DESCRIPTION": "Ignited creatures take damage at the end of the monsters' turn. Each turn, Ignited is reduced by #bhalf its amount (rounded up)."
   },
   {
-    "PROPER_NAME": "Multiword Keyword",
+    "PROPER_NAME": "Flame",
     "NAMES": [
-      "Multiword Keyword",
-      "multiword_keyword",
-      "multiword_keywords",
-      "multikey",
-      "multikeyword"
+      "flame",
+      "flame.",
+      "flames"
     ],
-    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+    "DESCRIPTION": "An enemy that doesn't attack and does something on death. Summoning multiple of the same type will upgrade the existing flame instead. NL Full = Deal damage equal to health. NL Pure = Remove debuffs from enemies and deal damage for each removed. NL Wild = Transfer debuffs to enemies."
+  },
+  {
+    "PROPER_NAME": "Full Flame",
+    "NAMES": [
+      "full flame",
+      "full_flame"
+    ],
+    "DESCRIPTION": "Deals damage equal to health on death."
   }
 ]

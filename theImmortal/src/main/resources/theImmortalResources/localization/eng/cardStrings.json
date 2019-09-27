@@ -46,5 +46,10 @@
     "NAME": "Imperishable Shooting",
     "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. Increase this card's hit count by !theImmortal:M2! this combat.",
     "UPGRADE_DESCRIPTION": "Innate. NL Deal !D! damage to a random enemy !M! times. Increase this card's hit count by !theImmortal:M2! this combat."
+  },
+  "theImmortal:Mirage": {
+    "NAME": "Mirage",
+    "DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame theimmortal:full_flame theimmortal:Full_Flame.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Summon a Full theimmortal:Flame. NL theimmortal:Burst: Until the end of your turn, transfer card HP loss to a random theimmortal:Flame."
   }
 }

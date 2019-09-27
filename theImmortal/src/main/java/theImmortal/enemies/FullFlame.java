@@ -38,6 +38,6 @@ public class FullFlame extends AbstractFlame {
     @Override
     public void upgrade() {
         UC.doVfx(new FireSplashEffect(this, MHP));
-        increaseMaxHp(MHP, false);
+        increaseMaxHp(MHP/2, false);
     }
 }
