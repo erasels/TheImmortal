@@ -24,6 +24,7 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
     private static final float FAST_LOCK_ON_TIME = 0.2f;
 
     public static final float FLAME_EFFECT_TIMER = 0.03f;
+    public static final float LOCKEDON_FLAME_EFFECT_TIMER = 0.005f;
 
     private float x;
     private float y;
@@ -160,7 +161,7 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
                 AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, UC.getRandomFireColor()));
                 AbstractDungeon.effectsQueue.add(new RedFireBurstParticleEffect(this.x, this.y));
                 if(lockedOn) {
-                    vfxTimer = FLAME_EFFECT_TIMER/3.0f;
+                    vfxTimer = LOCKEDON_FLAME_EFFECT_TIMER;
                 } else {
                     vfxTimer = FLAME_EFFECT_TIMER;
                 }
