@@ -41,5 +41,10 @@
   "theImmortal:RecklessAttack": {
     "NAME": "Reckless Attack",
     "DESCRIPTION": "The next card you play costs 0. Lose HP equal to !M! times its original energy cost instead."
+  },
+  "theImmortal:ImperishableShooting": {
+    "NAME": "Imperishable Shooting",
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. Increase this card's hit count by !theImmortal:M2! this combat.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Deal !D! damage to a random enemy !M! times. Increase this card's hit count by !theImmortal:M2! this combat."
   }
 }
