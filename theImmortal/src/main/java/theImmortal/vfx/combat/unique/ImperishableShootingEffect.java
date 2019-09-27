@@ -22,9 +22,8 @@ public class ImperishableShootingEffect extends AbstractGameEffect {
 
     private static final float LOCK_ON_TIME = 0.4f;
     private static final float FAST_LOCK_ON_TIME = 0.2f;
-
-    public static final float FLAME_EFFECT_TIMER = 0.03f;
-    public static final float LOCKEDON_FLAME_EFFECT_TIMER = 0.005f;
+    private static final float FLAME_EFFECT_TIMER = 0.03f;
+    private static final float LOCKEDON_FLAME_EFFECT_TIMER = 0.005f;
 
     private float x;
     private float y;
