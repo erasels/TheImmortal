@@ -39,7 +39,7 @@ public class FlameSlingEffect extends AbstractGameEffect {
         this.y = Interpolation.fade.apply(this.targetY, this.startY, this.duration / this.startingDuration);
         this.vfxTimer -= Gdx.graphics.getDeltaTime();
         if (this.vfxTimer < 0.0F) {
-            this.vfxTimer = 0.016F;
+            this.vfxTimer = FIREBALL_INTERVAL;
             AbstractDungeon.effectsQueue.add(new LightFlareParticleEffect(this.x, this.y, UC.getRandomFireColor()));
             AbstractDungeon.effectsQueue.add(new RedFireBurstParticleEffect(this.x, this.y));
         }
