@@ -13,5 +13,16 @@
       "The next card you play costs #b0 [REMOVE_SPACE]. Lose HP equal to #b",
       " times its original energy cost instead."
     ]
+  },
+  "theImmortal:Mirage": {
+    "NAME": "Bearing Flames",
+    "DESCRIPTIONS": [
+      "Until the end of your #b",
+      " next turns,",
+      " [REMOVE_SPACE] turn,",
+      " if you would lose HP from a card, ",
+      "a random #yFlame",
+      " loses it instead."
+    ]
   }
 }
