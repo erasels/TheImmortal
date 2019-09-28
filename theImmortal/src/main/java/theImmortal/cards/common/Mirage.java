@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.actions.unique.SummonFlameAction;
 import theImmortal.cards.abstracts.ImmortalCard;
 import theImmortal.enemies.AbstractFlame;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.powers.MiragePower;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
@@ -31,6 +30,7 @@ public class Mirage extends ImmortalCard {
 
         setBlock(BLOCK);
         setMagic(MAGIC);
+        setBurst(true);
     }
 
     @Override
@@ -45,9 +45,6 @@ public class Mirage extends ImmortalCard {
 
     @Override
     public void upgrade() {
-        if(!upgraded) {
-            tags.add(CardENUMs.BURST);
-        }
         super.upgrade();
     }
 }

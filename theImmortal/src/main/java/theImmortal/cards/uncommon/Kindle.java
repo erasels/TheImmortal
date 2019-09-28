@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 
 import static theImmortal.TheImmortal.makeID;
@@ -33,7 +32,7 @@ public class Kindle extends ImmortalCard {
         setHPCost(HPLOSS);
         setMagic(VAL, UPG_VAL);
         baseMagicNumber2 = magicNumber2 = HEAL;
-        tags.add(CardENUMs.BURST);
+        setBurst(false);
     }
 
     @Override

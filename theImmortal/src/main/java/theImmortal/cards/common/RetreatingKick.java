@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 
 import static theImmortal.TheImmortal.makeID;
@@ -27,7 +26,7 @@ public class RetreatingKick extends ImmortalCard {
         super(cardInfo, false);
 
         setDamage(DMG, UPG_DMG);
-        tags.add(CardENUMs.BURST);
+        setBurst(false);
     }
 
     @Override

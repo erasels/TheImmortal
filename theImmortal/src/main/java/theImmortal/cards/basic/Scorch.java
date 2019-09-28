@@ -4,7 +4,6 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
 import theImmortal.vfx.combat.FlameBurstEffect;
@@ -33,7 +32,7 @@ public class Scorch extends ImmortalCard {
         setMagic(HIT_COUNT);
         setCostUpgrade(COST_UPG);
 
-        tags.add(CardENUMs.BURST);
+        setBurst(false);
     }
 
     @Override

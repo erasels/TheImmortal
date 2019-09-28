@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
 
@@ -32,7 +31,7 @@ public class Channel extends ImmortalCard {
         setDamage(VAL, UPG_VAL);
         setMagic(MAGIC);
 
-        tags.add(CardENUMs.BURST);
+        setBurst(false);
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theImmortal.cards.abstracts.ImmortalCard;
-import theImmortal.patches.cards.CardENUMs;
 import theImmortal.powers.IgnitePower;
 import theImmortal.util.CardInfo;
 import theImmortal.util.UC;
@@ -33,6 +32,7 @@ public class FlameSling extends ImmortalCard {
         super(cardInfo, true);
 
         setMagic(MAGIC, UPG_MAGIC);
+        setBurst(true);
     }
 
     @Override
@@ -47,9 +47,6 @@ public class FlameSling extends ImmortalCard {
 
     @Override
     public void upgrade() {
-        if(!upgraded) {
-            tags.add(CardENUMs.BURST);
-        }
         super.upgrade();
     }
 }

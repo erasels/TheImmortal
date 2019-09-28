@@ -49,6 +49,7 @@ public abstract class ImmortalCard extends CustomCard {
     protected boolean upgradeHPCost;
     protected int hpCostUpgrade;
 
+    protected boolean upgradeBurst;
     public boolean hpCostCondition;
 
     public int baseMagicNumber2;
@@ -94,6 +95,7 @@ public abstract class ImmortalCard extends CustomCard {
         this.hpCostUpgrade = 0;
 
         hpCostCondition = true;
+        upgradeBurst = false;
 
 
         InitializeCard();
@@ -171,6 +173,14 @@ public abstract class ImmortalCard extends CustomCard {
         this.baseInnate = baseInnate;
         this.isInnate = baseInnate;
         this.upgInnate = upgInnate;
+    }
+
+    public void setBurst(boolean upgradeToBurst) {
+        if(!upgradeToBurst) {
+            upgradeBurst = true;
+        } else {
+            tags.add(CardENUMs.BURST);
+        }
     }
 
     public void setMultiDamage(boolean isMultiDamage) {
@@ -275,6 +285,9 @@ public abstract class ImmortalCard extends CustomCard {
             if (baseInnate ^ upgInnate) //different
                 this.isInnate = upgInnate;
 
+            if(upgradeBurst) {
+                tags.add(CardENUMs.BURST);
+            }
 
             this.initializeDescription();
         }
