@@ -50,6 +50,18 @@
   "theImmortal:Mirage": {
     "NAME": "Mirage",
     "DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Summon a Full theimmortal:Flame. NL theimmortal:Burst: Until the end of your turn, transfer card HP loss to a random theimmortal:Flame."
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame.. NL theimmortal:Burst: Until the end of your turn, transfer card HP loss to a random theimmortal:Flame."
+  },
+  "theImmortal:Warmup": {
+    "NAME": "Warm Up",
+    "DESCRIPTION": "Draw !M! cards."
+  },
+  "theImmortal:Kindle": {
+    "NAME": "Kindle",
+    "DESCRIPTION": "Gain !M! Strength. NL theimmortal:Burst: Heal !theImmortal:M2! HP"
+  },
+  "theImmortal:Channel": {
+    "NAME": "Channel",
+    "DESCRIPTION": "Deal !D! to ALL enemies. NL theimmortal:Burst: Heal !M! HP for each enemy hit."
   }
 }
