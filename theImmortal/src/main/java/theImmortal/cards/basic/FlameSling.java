@@ -25,13 +25,14 @@ public class FlameSling extends ImmortalCard {
     public final static String ID = makeID(cardInfo.cardName);
 
     private static final int MAGIC = 3;
+    private static final int UPG_MAGIC = 2;
     private static final int VULN = 1;
     private static final int DRAW = 2;
 
     public FlameSling() {
         super(cardInfo, true);
 
-        setMagic(MAGIC);
+        setMagic(MAGIC, UPG_MAGIC);
     }
 
     @Override
