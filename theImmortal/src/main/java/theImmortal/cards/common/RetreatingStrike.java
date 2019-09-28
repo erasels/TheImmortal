@@ -9,9 +9,9 @@ import theImmortal.util.CardInfo;
 import static theImmortal.TheImmortal.makeID;
 import static theImmortal.util.UC.*;
 
-public class RetreatingKick extends ImmortalCard {
+public class RetreatingStrike extends ImmortalCard {
     private final static CardInfo cardInfo = new CardInfo(
-            "RetreatingKick",
+            "RetreatingStrike",
             1,
             CardType.ATTACK,
             CardTarget.ENEMY
@@ -22,7 +22,7 @@ public class RetreatingKick extends ImmortalCard {
     private static final int DMG = 6;
     private static final int UPG_DMG = 2;
 
-    public RetreatingKick() {
+    public RetreatingStrike() {
         super(cardInfo, false);
 
         setDamage(DMG, UPG_DMG);
