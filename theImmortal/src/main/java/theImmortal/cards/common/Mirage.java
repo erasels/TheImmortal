@@ -45,7 +45,9 @@ public class Mirage extends ImmortalCard {
 
     @Override
     public void upgrade() {
+        if(!upgraded) {
+            tags.add(CardENUMs.BURST);
+        }
         super.upgrade();
-        tags.add(CardENUMs.BURST);
     }
 }
