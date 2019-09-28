@@ -97,6 +97,9 @@ public abstract class ImmortalCard extends CustomCard {
         hpCostCondition = true;
         upgradeBurst = false;
 
+        if(cardName.toLowerCase().contains("strike")) {
+            tags.add(CardTags.STRIKE);
+        }
 
         InitializeCard();
     }
