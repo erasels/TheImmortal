@@ -28,7 +28,7 @@ public class ImperishableShooting extends ImmortalCard {
     public ImperishableShooting() {
         super(cardInfo, true);
 
-        baseMagicNumber2 = HIT_UPG;
+        baseMagicNumber2 = magicNumber2 = HIT_UPG;
         setDamage(DAMAGE);
         setMagic(MAGIC);
         setInnate(false, true);
@@ -43,7 +43,6 @@ public class ImperishableShooting extends ImmortalCard {
 
     @Override
     public void applyPowers() {
-        magicNumber2 = baseMagicNumber2;
         super.applyPowers();
         if(baseMagicNumber > MAGIC) {
             isMagicNumberModified = true;

@@ -32,7 +32,7 @@ public class Kindle extends ImmortalCard {
 
         setHPCost(HPLOSS);
         setMagic(VAL, UPG_VAL);
-        baseMagicNumber2 = HEAL;
+        baseMagicNumber2 = magicNumber2 = HEAL;
         tags.add(CardENUMs.BURST);
     }
 
@@ -44,11 +44,5 @@ public class Kindle extends ImmortalCard {
         if(checkBurst()) {
             atb(new HealAction(p, p, magicNumber2));
         }
-    }
-
-    @Override
-    public void applyPowers() {
-        magicNumber2 = HEAL;
-        super.applyPowers();
     }
 }
