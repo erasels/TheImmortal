@@ -62,6 +62,10 @@
   },
   "theImmortal:Channel": {
     "NAME": "Channel",
-    "DESCRIPTION": "Deal !D! to ALL enemies. NL theimmortal:Burst: Heal !M! HP for each enemy hit."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL theimmortal:Burst: Heal !M! HP for each enemy hit."
+  },
+  "theImmortal:RetreatingKick": {
+    "NAME": "Retreating Kick",
+    "DESCRIPTION": "Deal !D! damage. NL theimmortal:Burst: Gain Block equal to the damage dealt."
   }
 }
