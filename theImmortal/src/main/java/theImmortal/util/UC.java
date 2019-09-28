@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import theImmortal.actions.utility.DamageAllAction;
 import theImmortal.enemies.AbstractFlame;
 import theImmortal.patches.cards.HPLossCardsPatches;
 import theImmortal.patches.combat.BurstMechanics;
@@ -72,6 +73,14 @@ public class UC {
         }
     }
 
+    public static void doAllDmg(int amount, AbstractGameAction.AttackEffect ae, boolean top) {
+        if (top) {
+            att(new DamageAllAction(p(), amount, false, DamageInfo.DamageType.NORMAL, ae, false));
+        } else {
+            atb(new DamageAllAction(p(), amount, false, DamageInfo.DamageType.NORMAL, ae, false));
+        }
+    }
+
     public static void doDef(int amount) {
         atb(new GainBlockAction(p(), p(), amount));
     }
@@ -120,6 +129,10 @@ public class UC {
             mons = mons.stream().filter(exclusion).collect(Collectors.toCollection(ArrayList::new));
         }
         return mons.get(AbstractDungeon.cardRandomRng.random(mons.size() - 1));
+    }
+
+    public static ArrayList<AbstractMonster> getAliveMonster() {
+        return AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDeadOrEscaped()).collect(Collectors.toCollection(ArrayList::new));
     }
 
     //HPLossCards methods
