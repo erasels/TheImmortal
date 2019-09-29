@@ -50,7 +50,7 @@
   "theImmortal:Mirage": {
     "NAME": "Mirage",
     "DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame.. NL theimmortal:Burst: Until the end of your turn, transfer card HP loss to a random theimmortal:Flame."
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Summon a theimmortal:Full_Flame. NL theimmortal:Burst: Until the end of your turn, transfer card HP loss to a random theimmortal:Flame."
   },
   "theImmortal:Warmup": {
     "NAME": "Warm Up",
@@ -89,5 +89,9 @@
   "theImmortal:ImmortalFlame": {
     "NAME": "Immortal Flame",
     "DESCRIPTION": "Whenever this card would leave your hand, return it to your hand and deal !D! damage to ALL enemies."
+  },
+  "theImmortal:RetravelingOldRoads": {
+    "NAME": "Retraveling Old Roads",
+    "DESCRIPTION": "Scry !M!. Increase the amount of scryed cards by !theImmortal:M2! this combat. Shuffle this card into your draw pile."
   }
 }
