@@ -1,5 +1,6 @@
 package theImmortal.mechanics;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -38,7 +39,7 @@ public class ImmortalityManager {
                 UC.p().isDead = false;
                 addExhaustion(1);
                 UC.atb(new ClearAllDebuffsAction(UC.p()));
-                AbstractDungeon.player.currentHealth = AbstractDungeon.player.maxHealth;
+                AbstractDungeon.player.currentHealth = MathUtils.floor(AbstractDungeon.player.maxHealth/2.0f);
                 AbstractDungeon.player.healthBarUpdatedEvent();
 
                 UC.doVfx(new ReviveEffect(UC.p()));
