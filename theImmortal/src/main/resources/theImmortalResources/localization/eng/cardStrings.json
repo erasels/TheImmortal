@@ -85,5 +85,9 @@
     "NAME": "False Ignition",
     "DESCRIPTION": "Exhaust a random card in your hand. NL Gain !M! Temporary Strength.",
     "UPGRADE_DESCRIPTION": "Exhaust a card in your hand. NL Gain !M! Temporary Strength."
+  },
+  "theImmortal:ImmortalFlame": {
+    "NAME": "Immortal Flame",
+    "DESCRIPTION": "Whenever this card would leave your hand, return it to your hand and deal !D! damage to ALL enemies."
   }
 }
