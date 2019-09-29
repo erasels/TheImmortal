@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import theImmortal.TheImmortal;
 import theImmortal.actions.utility.ClearAllDebuffsAction;
 import theImmortal.patches.combat.ExhaustionMechanics;
 import theImmortal.patches.general.Immortality;
@@ -36,6 +37,7 @@ public class ImmortalityManager {
     public static boolean deathLogic() {
         if(isImmortal()) {
             if (getExhaustion() < MAX_DEATH_COUNT) {
+                TheImmortal.logger.info("Immortal died and exhaustion of " + getExhaustion() + " was small than the max Death count.");
                 UC.p().isDead = false;
                 addExhaustion(1);
                 UC.atb(new ClearAllDebuffsAction(UC.p()));

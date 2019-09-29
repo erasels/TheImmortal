@@ -22,6 +22,7 @@ import org.apache.logging.log4j.Logger;
 import theImmortal.cards.variables.MagicNumber2;
 import theImmortal.characters.ImmortalCharacter;
 import theImmortal.mechanics.ImmortalityManager;
+import theImmortal.relics.abstracts.EmptyJar;
 import theImmortal.util.IDCheckDontTouchPls;
 import theImmortal.util.TextureLoader;
 
@@ -150,6 +151,7 @@ public class TheImmortal implements
 
     @Override
     public void receiveEditRelics() {
+        BaseMod.addRelicToCustomPool(new EmptyJar(), ImmortalCharacter.Enums.COLOR_IMMORTAL);
     }
 
     @Override

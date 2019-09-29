@@ -18,7 +18,6 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.relics.PrismaticShard;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +26,7 @@ import theImmortal.cards.basic.Defend;
 import theImmortal.cards.basic.FlameSling;
 import theImmortal.cards.basic.Scorch;
 import theImmortal.cards.basic.Strike;
+import theImmortal.relics.abstracts.EmptyJar;
 import theImmortal.ui.ImmortalEnergyOrb;
 
 import java.util.ArrayList;
@@ -102,8 +102,8 @@ public class ImmortalCharacter extends CustomPlayer {
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
-        retVal.add(PrismaticShard.ID);
-        UnlockTracker.markRelicAsSeen(PrismaticShard.ID);
+        retVal.add(EmptyJar.ID);
+        UnlockTracker.markRelicAsSeen(EmptyJar.ID);
         return retVal;
     }
 
