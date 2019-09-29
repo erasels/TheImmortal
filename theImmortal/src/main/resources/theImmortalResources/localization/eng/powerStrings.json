@@ -31,5 +31,13 @@
       "When you would die, heal HP equal to #b",
       " times the amount of cards with a HP cost in your deck."
     ]
+  },
+  "theImmortal:LoseHPDrawCard": {
+    "NAME": "HP Loss Card Draw",
+    "DESCRIPTIONS": [
+      "Whenever you lose HP, draw #b",
+      " card.",
+      " cards."
+    ]
   }
 }

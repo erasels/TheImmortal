@@ -91,7 +91,11 @@
     "DESCRIPTION": "Whenever this card would leave your hand, return it to your hand and deal !D! damage to ALL enemies."
   },
   "theImmortal:RetravelingOldRoads": {
-    "NAME": "Retraveling Old Roads",
+    "NAME": "Peregrinate",
     "DESCRIPTION": "Scry !M!. Increase the amount of scryed cards by !theImmortal:M2! this combat. Shuffle this card into your draw pile."
+  },
+  "theImmortal:Caprice": {
+    "NAME": "Caprice",
+    "DESCRIPTION": "Ethereal. NL Whenever you lose HP, draw !M! cards."
   }
 }

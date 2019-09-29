@@ -20,7 +20,7 @@ public class RetravelingOldRoads extends ImmortalCard {
 
     public final static String ID = makeID(cardInfo.cardName);
 
-    private static final int VAL = -1;
+    private static final int VAL = 0;
     private static final int MAG = 3;
     private static final int MAG2 = 2;
 
