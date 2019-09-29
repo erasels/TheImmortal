@@ -20,7 +20,7 @@ public class ImmortalFlame extends ImmortalCard {
 
     public final static String ID = makeID(cardInfo.cardName);
 
-    private static final int VAL = 7;
+    private static final int VAL = 6;
     private static final int UPG_VAL = 3;
 
     public ImmortalFlame() {
