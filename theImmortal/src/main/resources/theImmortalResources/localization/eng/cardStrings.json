@@ -75,5 +75,10 @@
   "theImmortal:BlisteringRush": {
     "NAME": "Blistering Rush",
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL theimmortal:Burst: Apply !M! theimmortal:Ignite to ALL enemies."
+  },
+  "theImmortal:FireTailLash": {
+    "NAME": "Fire Tail Lash",
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage and apply theimmortal:Ignite equal to the damage dealt. NL Apply !M! Vulnerable."
   }
 }
