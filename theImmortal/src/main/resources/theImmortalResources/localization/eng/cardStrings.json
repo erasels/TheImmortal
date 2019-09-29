@@ -67,5 +67,9 @@
   "theImmortal:RetreatingStrike": {
     "NAME": "Retreating Strike",
     "DESCRIPTION": "Deal !D! damage. NL theimmortal:Burst: Gain Block equal to the damage dealt."
+  },
+  "theImmortal:Updraft": {
+    "NAME": "Updraft",
+    "DESCRIPTION": "When you would die, heal HP equal to !M! times the amount of cards with a HP cost in your deck."
   }
 }

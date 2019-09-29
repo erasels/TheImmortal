@@ -24,5 +24,12 @@
       "a random #yFlame",
       " loses it instead."
     ]
+  },
+  "theImmortal:Updraft": {
+    "NAME": "Updraft",
+    "DESCRIPTIONS": [
+      "When you would die, heal HP equal to #b",
+      " times the amount of cards with a HP cost in your deck."
+    ]
   }
 }
