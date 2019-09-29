@@ -71,5 +71,9 @@
   "theImmortal:Updraft": {
     "NAME": "Updraft",
     "DESCRIPTION": "When you would die, heal HP equal to !M! times the amount of cards with a HP cost in your deck."
+  },
+  "theImmortal:BlisteringRush": {
+    "NAME": "Blistering Rush",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL theimmortal:Burst: Apply !M! theimmortal:Ignite to ALL enemies."
   }
 }
