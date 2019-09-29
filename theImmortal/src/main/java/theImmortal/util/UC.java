@@ -131,7 +131,7 @@ public class UC {
         return mons.get(AbstractDungeon.cardRandomRng.random(mons.size() - 1));
     }
 
-    public static ArrayList<AbstractMonster> getAliveMonster() {
+    public static ArrayList<AbstractMonster> getAliveMonsters() {
         return AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDeadOrEscaped()).collect(Collectors.toCollection(ArrayList::new));
     }
 

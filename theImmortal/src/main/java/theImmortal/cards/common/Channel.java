@@ -39,7 +39,7 @@ public class Channel extends ImmortalCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        ArrayList<AbstractMonster> mons = UC.getAliveMonster();
+        ArrayList<AbstractMonster> mons = UC.getAliveMonsters();
         int c = mons.size();
 
         mons.forEach(mon -> UC.doVfx(new ChannelEffect(mon.drawX, mon.drawY, p.drawX, p.drawY)));
