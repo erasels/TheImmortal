@@ -36,7 +36,7 @@
   "theImmortal:Flare": {
     "NAME": "Flare",
     "DESCRIPTION": "Deal damage equal to all HP lost this combat to ALL enemies. NL (Currently: !theImmortal:M2!)",
-    "UPGRADE_DESCRIPTION": "Deal damage equal to all HP lost this combat + !M! to ALL enemies. NL (Currently: !theImmortal:M2!)"
+    "UPGRADE_DESCRIPTION": "Deal damage equal to all HP lost this combat + !D! to ALL enemies. NL (Currently: !theImmortal:M2!)"
   },
   "theImmortal:RecklessAttack": {
     "NAME": "Reckless Attack",

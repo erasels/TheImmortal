@@ -31,14 +31,16 @@ public class Flare extends ImmortalCard {
         super(cardInfo, true);
         baseMagicNumber2 = 0;
 
-        setMagic(MAGIC, UPG_MAGIC);
+        setDamage(MAGIC, UPG_MAGIC);
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int dmg = upgraded?magicNumber2+magicNumber:magicNumber2;
-        UC.doVfx(new FireSplashEffect(p, NumberUtils.max(dmg*2, 10)));
-        UC.atb(new DamageAllAction(p, dmg, false, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, false));
+        int dmg = upgraded?magicNumber2+damage:magicNumber2;
+        if(dmg>0) {
+            UC.doVfx(new FireSplashEffect(p, NumberUtils.max(dmg * 2, 10)));
+            UC.atb(new DamageAllAction(p, dmg, false, DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, false));
+        }
     }
 
     @Override
