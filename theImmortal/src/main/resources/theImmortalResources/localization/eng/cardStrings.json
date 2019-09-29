@@ -80,5 +80,10 @@
     "NAME": "Fire Tail Lash",
     "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable.",
     "UPGRADE_DESCRIPTION": "Deal !D! damage and apply theimmortal:Ignite equal to the damage dealt. NL Apply !M! Vulnerable."
+  },
+  "theImmortal:FalseIgnition": {
+    "NAME": "False Ignition",
+    "DESCRIPTION": "Exhaust a random card in your hand. NL Gain !M! Temporary Strength.",
+    "UPGRADE_DESCRIPTION": "Exhaust a card in your hand. NL Gain !M! Temporary Strength."
   }
 }
