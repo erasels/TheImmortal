@@ -109,7 +109,7 @@ public class UC {
         atb(new VFXAction(gameEffect, duration));
     }
 
-
+    //Getters
     public static Color getRandomFireColor() {
         int i = MathUtils.random(3);
         switch (i) {
@@ -122,7 +122,6 @@ public class UC {
         }
     }
 
-    //Getters
     public static AbstractMonster getRandomFlame(Predicate<AbstractMonster> exclusion) {
         ArrayList<AbstractMonster> mons = AbstractDungeon.getMonsters().monsters.stream().filter(m -> m instanceof AbstractFlame).collect(Collectors.toCollection(ArrayList::new));
         if (exclusion != null) {
