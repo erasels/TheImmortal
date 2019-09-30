@@ -20,7 +20,7 @@ public class Updraft extends ImmortalCard {
     public final static String ID = makeID(cardInfo.cardName);
 
     private static final int VAL = 2;
-    private static final int UPG_VAL = -1;
+    private static final int UPG_VAL = 1;
 
     public Updraft() {
         super(cardInfo, false);
