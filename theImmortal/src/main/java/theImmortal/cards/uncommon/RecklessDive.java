@@ -29,7 +29,7 @@ public class RecklessDive extends ImmortalCard {
 
     private static final int ATK_AMT = 3;
     private static final int HPCOST = 3;
-    private static final int UPG_HPCOST = -1;
+    private static final int UPG_HPCOST = -4;
 
 
     public RecklessDive() {
