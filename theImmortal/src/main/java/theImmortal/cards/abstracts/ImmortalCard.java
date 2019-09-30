@@ -296,6 +296,15 @@ public abstract class ImmortalCard extends CustomCard {
         }
     }
 
+    @Override
+    public void triggerOnGlowCheck() {
+        if(this.hasTag(CardENUMs.BURST) && UC.checkBurst()) {
+            glowColor = GOLD_BORDER_GLOW_COLOR;
+        } else {
+            glowColor = BLUE_BORDER_GLOW_COLOR;
+        }
+    }
+
     public void InitializeCard() {
         FontHelper.cardDescFont_N.getData().setScale(1.0f);
         this.initializeTitle();
