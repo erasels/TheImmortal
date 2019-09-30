@@ -1,6 +1,7 @@
 package theImmortal.cards.common;
 
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
@@ -34,5 +35,6 @@ public class FalseIgnition extends ImmortalCard {
         atb(new ExhaustAction(1, !upgraded, false));
         doPow(p, new StrengthPower(p, magicNumber));
         doPow(p, new LoseStrengthPower(p, magicNumber));
+        atb(new GainEnergyAction(1));
     }
 }

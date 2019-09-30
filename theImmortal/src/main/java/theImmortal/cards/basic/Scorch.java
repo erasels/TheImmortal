@@ -1,6 +1,7 @@
 package theImmortal.cards.basic;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theImmortal.cards.abstracts.ImmortalCard;
@@ -26,7 +27,7 @@ public class Scorch extends ImmortalCard {
     private static final int COST_UPG = 1;
 
     public Scorch() {
-        super(cardInfo, false);
+        super(cardInfo, true);
 
         setDamage(DAMAGE);
         setMagic(HIT_COUNT);
@@ -44,6 +45,9 @@ public class Scorch extends ImmortalCard {
             if (UC.checkBurst()) {
                 UC.doVfx(new FlameBurstEffect(m.hb.cX, m.hb.cY, 30));
                 UC.doDmg(m, damage, AbstractGameAction.AttackEffect.FIRE);
+                if(!upgraded) {
+                    UC.atb(new GainEnergyAction(1));
+                }
             }
         }
     }

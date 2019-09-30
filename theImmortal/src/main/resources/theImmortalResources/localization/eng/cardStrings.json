@@ -14,7 +14,8 @@
   },
   "theImmortal:Scorch": {
     "NAME": "Scorch",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL theimmortal:Burst: Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage !M! times. NL theimmortal:Burst: Deal !D! damage. Gain [E].",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage !M! times. NL theimmortal:Burst: Deal !D! damage."
   },
   "theImmortal:Blitz": {
     "NAME": "Blitz",
@@ -83,8 +84,8 @@
   },
   "theImmortal:FalseIgnition": {
     "NAME": "False Ignition",
-    "DESCRIPTION": "Exhaust a random card in your hand. NL Gain !M! Temporary Strength.",
-    "UPGRADE_DESCRIPTION": "Exhaust a card in your hand. NL Gain !M! Temporary Strength."
+    "DESCRIPTION": "Exhaust a random card in your hand. NL Gain !M! Temporary Strength and [E].",
+    "UPGRADE_DESCRIPTION": "Exhaust a card in your hand. NL Gain !M! Temporary Strength and [E]."
   },
   "theImmortal:ImmortalFlame": {
     "NAME": "Immortal Flame",
