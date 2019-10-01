@@ -179,7 +179,7 @@ public abstract class ImmortalCard extends CustomCard {
     }
 
     public void setBurst(boolean upgradeToBurst) {
-        if(!upgradeToBurst) {
+        if(upgradeToBurst) {
             upgradeBurst = true;
         } else {
             tags.add(CardENUMs.BURST);
