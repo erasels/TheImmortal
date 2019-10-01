@@ -106,5 +106,9 @@
   "theImmortal:Preordained": {
     "NAME": "Preordained",
     "DESCRIPTION": "Scry !M!. NL Deal !D! damage for each card you discard."
+  },
+  "theImmortal:Venting": {
+    "NAME": "Venting",
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! cards, heal HP equal to their energy cost."
   }
 }
