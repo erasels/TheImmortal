@@ -20,6 +20,7 @@ import com.megacrit.cardcrawl.localization.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theImmortal.cards.variables.MagicNumber2;
+import theImmortal.cards.variables.ShowNumber;
 import theImmortal.characters.ImmortalCharacter;
 import theImmortal.mechanics.ImmortalityManager;
 import theImmortal.relics.abstracts.EmptyJar;
@@ -158,6 +159,7 @@ public class TheImmortal implements
     public void receiveEditCards() {
         pathCheck();
         BaseMod.addDynamicVariable(new MagicNumber2());
+        BaseMod.addDynamicVariable(new ShowNumber());
 
         try {
             AutoLoader.addCards();
