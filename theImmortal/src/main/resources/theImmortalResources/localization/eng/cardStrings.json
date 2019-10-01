@@ -110,5 +110,9 @@
   "theImmortal:Venting": {
     "NAME": "Venting",
     "DESCRIPTION": "Gain !B! Block. NL Draw !M! cards, heal HP equal to their energy cost."
+  },
+  "theImmortal:RecklessSacrifice": {
+    "NAME": "Reckless Sacrifice",
+    "DESCRIPTION": "Repeats X times and doubles the effects each repeat. NL Lose !M! HP and Deal !D! damage. NL (HP: !theImmortal:M2!, Damage: !theImmortal:SN!)"
   }
 }
