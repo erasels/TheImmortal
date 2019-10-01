@@ -98,5 +98,13 @@
   "theImmortal:Caprice": {
     "NAME": "Caprice",
     "DESCRIPTION": "Ethereal. NL Whenever you lose HP, draw !M! cards."
+  },
+  "theImmortal:Wandering": {
+    "NAME": "Wandering",
+    "DESCRIPTION": "Scry !M!. NL theimmortal:Burst: Next turn, draw cards equal to the amount of discarded cards."
+  },
+  "theImmortal:Preordained": {
+    "NAME": "Preordained",
+    "DESCRIPTION": "Scry !M!. NL Deal !D! damage for each card you discard."
   }
 }
