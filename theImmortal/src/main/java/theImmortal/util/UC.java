@@ -134,6 +134,13 @@ public class UC {
         return AbstractDungeon.getMonsters().monsters.stream().filter(m -> !m.isDeadOrEscaped()).collect(Collectors.toCollection(ArrayList::new));
     }
 
+    public static int getLogicalCardCost(AbstractCard c) {
+        if(c.costForTurn > 0 && !c.freeToPlayOnce) {
+            return c.costForTurn;
+        }
+        return 0;
+    }
+
     //HPLossCards methods
     public static int getHPCost(AbstractCard c) {
         return HPLossCardsPatches.HPLossFields.hpCost.get(c);
