@@ -26,7 +26,6 @@ public class Venting extends ImmortalCard {
 
     public Venting() {
         super(cardInfo, false);
-        p(); //Stupid intellij stuff s, s
 
         setBlock(BLOCK, UPG_BLOCK);
         setMagic(MAGIC, UPG_MAGIC);
