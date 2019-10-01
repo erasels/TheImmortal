@@ -1,10 +1,13 @@
 package theImmortal.actions.unique;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
+import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 import theImmortal.util.UC;
 
 public class RecklessSacrificeAction extends AbstractGameAction {
@@ -37,8 +40,20 @@ public class RecklessSacrificeAction extends AbstractGameAction {
             dmg = damage;
             hpl = hploss;
             for (int i = 0; i < effect; i++) {
+                UC.doVfx(new InflameEffect(UC.p()));
+                for (int j = 0; j < i; j++) {
+                    float xOff = ((target.hb_w/2.0f) *MathUtils.random());
+                    if(MathUtils.randomBoolean()) {
+                        xOff = -xOff;
+                    }
+                    float yOff = ((target.hb_h/2.0f) *MathUtils.random());
+                    if(MathUtils.randomBoolean()) {
+                        yOff = -yOff;
+                    }
+                    UC.doVfx(new ExplosionSmallEffect(target.drawX + xOff, target.drawY+yOff));
+                }
                 UC.atb(new LoseHPIfMonsterNotDeadAction(UC.p(), UC.p(), hpl, (AbstractMonster)target));
-                UC.doDmg(target, dmg);
+                UC.doDmg(target, dmg, AttackEffect.FIRE);
 
                 hpl*=2;
                 dmg*=2;
