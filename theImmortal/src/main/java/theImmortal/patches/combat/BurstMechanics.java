@@ -16,7 +16,8 @@ public class BurstMechanics {
 
     @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
     public static class PlayerBurstField {
-        public static SpireField<Boolean> isBurst = new SpireField<Boolean>(() -> false);
+        public static SpireField<Boolean> isBurst = new SpireField<>(() -> false);
+        public static SpireField<Integer> turnBurstAmount = new SpireField<>(() -> 0);
     }
 
     //Should take care of clearing burst from last combat as well
@@ -25,6 +26,7 @@ public class BurstMechanics {
         @SpirePrefixPatch
         public static void patch(AbstractPlayer __instance) {
             PlayerBurstField.isBurst.set(AbstractDungeon.player, false);
+            BurstMechanics.PlayerBurstField.turnBurstAmount.set(AbstractDungeon.player, 0);
         }
     }
 

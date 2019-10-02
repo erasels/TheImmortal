@@ -32,6 +32,14 @@ public class UC {
 
     //Checks
     public static boolean checkBurst() {
+        boolean tmp = BurstMechanics.PlayerBurstField.isBurst.get(p());
+        if(tmp) {
+            incrementTurnBurstAmount();
+        }
+        return tmp;
+    }
+
+    public static boolean anonymousCheckBurst() {
         return BurstMechanics.PlayerBurstField.isBurst.get(p());
     }
 
@@ -139,6 +147,15 @@ public class UC {
             return c.costForTurn;
         }
         return 0;
+    }
+
+    public static int getTurnBurstAmount() {
+        return BurstMechanics.PlayerBurstField.turnBurstAmount.get(p());
+    }
+
+    //Setters
+    public static void incrementTurnBurstAmount() {
+        BurstMechanics.PlayerBurstField.turnBurstAmount.set(p(), getTurnBurstAmount() + 1);
     }
 
     public static <T> boolean True(T t) {

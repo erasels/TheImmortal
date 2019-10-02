@@ -318,7 +318,7 @@ public abstract class ImmortalCard extends CustomCard {
 
     @Override
     public void triggerOnGlowCheck() {
-        if(this.hasTag(CardENUMs.BURST) && UC.checkBurst()) {
+        if(this.hasTag(CardENUMs.BURST) && UC.anonymousCheckBurst()) {
             glowColor = GOLD_BORDER_GLOW_COLOR;
         } else {
             glowColor = BLUE_BORDER_GLOW_COLOR;
