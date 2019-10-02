@@ -29,11 +29,12 @@ public class BlisteringRush extends ImmortalCard {
 
     public BlisteringRush() {
         super(cardInfo, false);
-        p(); //Stupid intellij stuff
+
         setDamage(DMG, UPG_DMG);
         setMagic(MAG, UPG_MAG);
         setHPCost(HPLOSS);
         setBurst(false);
+        setMultiDamage(true);
     }
 
     @Override
