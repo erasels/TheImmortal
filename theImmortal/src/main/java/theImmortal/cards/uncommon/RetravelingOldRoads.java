@@ -1,4 +1,4 @@
-package theImmortal.cards.rare;
+package theImmortal.cards.uncommon;
 
 import com.megacrit.cardcrawl.actions.utility.ScryAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
