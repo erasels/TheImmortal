@@ -137,5 +137,9 @@
   "theImmortal:Foreordain": {
     "NAME": "Foreordain",
     "DESCRIPTION": "Scry !M!. NL Add a copy of each discarded card to you hand."
+  },
+  "theImmortal:CursedSign": {
+    "NAME": "Cursed Sign",
+    "DESCRIPTION": "Apply !theImmortal:M2! theimmortal:Ignite and !M! Vulnerable. NL When the enemy dies, it applies all of its debuffs to ALL enemies."
   }
 }

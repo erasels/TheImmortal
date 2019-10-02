@@ -3,7 +3,7 @@
     "NAME": "Ignite",
     "DESCRIPTIONS": [
       "At the end of its turn, takes #b",
-      " damage, then reduce #Ignite by #byhalf its amount (rounded up).",
+      " damage, then reduce #yIgnite by #bhalf its amount (rounded up).",
       "At the end of the monsters' turn, take #b"
     ]
   },
@@ -46,6 +46,12 @@
       "At the start of your turn, lose #b",
       " HP and gain #b",
       " #yStrength [REMOVE_SPACE]."
+    ]
+  },
+  "theImmortal:Cursed": {
+    "NAME": "Cursed",
+    "DESCRIPTIONS": [
+      "On death, applies its debuffs to all other monsters."
     ]
   }
 }
