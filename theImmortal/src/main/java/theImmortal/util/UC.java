@@ -135,10 +135,14 @@ public class UC {
     }
 
     public static int getLogicalCardCost(AbstractCard c) {
-        if(c.costForTurn > 0 && !c.freeToPlayOnce) {
+        if (c.costForTurn > 0 && !c.freeToPlayOnce) {
             return c.costForTurn;
         }
         return 0;
+    }
+
+    public static <T> boolean True(T t) {
+        return true;
     }
 
     //HPLossCards methods
