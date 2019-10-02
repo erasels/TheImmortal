@@ -52,6 +52,8 @@ public abstract class ImmortalCard extends CustomCard {
     protected boolean upgradeBurst;
     public boolean hpCostCondition;
 
+    protected boolean upgradeRetain;
+
     public int baseMagicNumber2;
     public int magicNumber2;
     public boolean isMagicNumber2Modified;
@@ -100,6 +102,7 @@ public abstract class ImmortalCard extends CustomCard {
 
         hpCostCondition = true;
         upgradeBurst = false;
+        upgradeRetain = false;
 
         if(cardName.toLowerCase().contains("strike")) {
             tags.add(CardTags.STRIKE);
@@ -187,6 +190,14 @@ public abstract class ImmortalCard extends CustomCard {
             upgradeBurst = true;
         } else {
             tags.add(CardENUMs.BURST);
+        }
+    }
+
+    public void setRetain(boolean upgradeToRetain) {
+        if(upgradeToRetain) {
+            upgradeRetain = true;
+        } else {
+            selfRetain = true;
         }
     }
 
@@ -295,6 +306,10 @@ public abstract class ImmortalCard extends CustomCard {
 
             if(upgradeBurst) {
                 tags.add(CardENUMs.BURST);
+            }
+
+            if(upgradeRetain) {
+                selfRetain = true;
             }
 
             this.initializeDescription();
