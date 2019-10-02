@@ -114,5 +114,10 @@
   "theImmortal:RecklessSacrifice": {
     "NAME": "Reckless Sacrifice",
     "DESCRIPTION": "Repeats X times and doubles the effects each repeat. NL Lose !M! HP and Deal !D! damage. NL (HP: !theImmortal:M2!, Damage: !theImmortal:SN!)"
+  },
+  "theImmortal:Transpose": {
+    "NAME": "Transpose",
+    "DESCRIPTION": "Switch your draw and discard piles. NL You cannot draw cards this turn. NL theimmortal:Burst: Scry !M!.",
+    "UPGRADE_DESCRIPTION": "Switch your draw and discard piles. NL Scry !M!."
   }
 }
