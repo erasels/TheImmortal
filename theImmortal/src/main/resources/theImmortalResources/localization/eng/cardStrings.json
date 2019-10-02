@@ -124,5 +124,9 @@
     "NAME": "Song and Dance",
     "DESCRIPTION": "Gain !M! temporary Strength. NL theimmortal:Burst: Heal HP equal to your Strength.",
     "UPGRADE_DESCRIPTION": "Gain !M! temporary Strength and heal HP equal to your Strength. NL theimmortal:Burst: Next turn, gain !B! Block."
+  },
+  "theImmortal:IndiscriminateIgnition": {
+    "NAME": "Indiscriminate Ignition",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies for each card in your hand. NL End your turn."
   }
 }
