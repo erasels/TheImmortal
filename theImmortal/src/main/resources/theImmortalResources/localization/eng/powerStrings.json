@@ -39,5 +39,13 @@
       " card.",
       " cards."
     ]
+  },
+  "theImmortal:BurningMadness": {
+    "NAME": "Burning Madness",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose #b",
+      " HP and gain #b",
+      " #yStrength [REMOVE_SPACE]."
+    ]
   }
 }

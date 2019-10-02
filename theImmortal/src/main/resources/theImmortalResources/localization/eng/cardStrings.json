@@ -128,5 +128,10 @@
   "theImmortal:IndiscriminateIgnition": {
     "NAME": "Indiscriminate Ignition",
     "DESCRIPTION": "Deal !D! damage to ALL enemies for each card in your hand. NL End your turn."
+  },
+  "theImmortal:BurningMadness": {
+    "NAME": "Burning Madness",
+    "DESCRIPTION": "At the start of your turn, lose !M! HP and gain !theImmortal:M2! Strength.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Retain. NL At the start of your turn, lose !M! HP and gain !theImmortal:M2! Strength."
   }
 }
