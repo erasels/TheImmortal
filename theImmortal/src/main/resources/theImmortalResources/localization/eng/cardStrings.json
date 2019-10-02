@@ -119,5 +119,10 @@
     "NAME": "Transpose",
     "DESCRIPTION": "Switch your draw and discard piles. NL You cannot draw cards this turn. NL theimmortal:Burst: Scry !M!.",
     "UPGRADE_DESCRIPTION": "Switch your draw and discard piles. NL Scry !M!."
+  },
+  "theImmortal:SongAndDance": {
+    "NAME": "Song and Dance",
+    "DESCRIPTION": "Gain !M! temporary Strength. NL theimmortal:Burst: Heal HP equal to your Strength.",
+    "UPGRADE_DESCRIPTION": "Gain !M! temporary Strength and heal HP equal to your Strength. NL theimmortal:Burst: Next turn, gain !B! Block."
   }
 }
