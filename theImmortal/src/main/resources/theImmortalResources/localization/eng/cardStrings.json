@@ -145,5 +145,9 @@
   "theImmortal:Caution": {
     "NAME": "Caution",
     "DESCRIPTION": "Scry !M!. NL Gain !B! Block for each card you discard."
+  },
+  "theImmortal:FallingPhoenix": {
+    "NAME": "Falling Phoenix",
+    "DESCRIPTION": "Costs 1 less [E] for each theimmortal:Burst effect triggered this turn. NL Deal !D! damage !M! times."
   }
 }
