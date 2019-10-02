@@ -24,14 +24,15 @@ public class SpontaneousCombustion extends ImmortalCard {
     public final static String ID = makeID(cardInfo.cardName);
 
     private static final int HPCOST = 7;
+    private static final int UPG_HPCOST = -2;
     private static final int DAMAGE = 6;
-    private static final int UPG_DAMAGE = 2;
+    private static final int UPG_DAMAGE = 1;
     private static final int MAGIC = 3;
 
     public SpontaneousCombustion() {
         super(cardInfo, false);
 
-        setHPCost(HPCOST);
+        setHPCost(HPCOST, UPG_HPCOST);
         AutoplayField.autoplay.set(this, true);
         setMultiDamage(true);
 
